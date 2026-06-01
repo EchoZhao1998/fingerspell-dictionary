@@ -111,8 +111,7 @@
   label.field-label { display: block; font-weight: 600; font-size: 15px; margin: 20px 0 8px; }
   input.answer {
     width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px;
-    font-size: 16px; background: var(--soft); text-transform: uppercase; letter-spacing: 0.08em;
-    font-family: inherit;
+    font-size: 16px; background: var(--soft); font-family: inherit;
   }
   input.answer:focus { outline: none; border-color: var(--ink); background: var(--card); }
 
@@ -333,7 +332,7 @@
   </div>
 
   <label class="field-label" for="answer">Your Answer</label>
-  <input id="answer" class="answer" autocomplete="off" placeholder="Type the word here..." autocapitalize="characters">
+  <input id="answer" class="answer" autocomplete="off" placeholder="Type the word here..." autocapitalize="none">
 
   <button class="primary-btn" id="check-btn">Check Answer</button>
 
@@ -800,11 +799,11 @@ function loadNextWord() {
 }
 
 function checkAnswer() {
-  const guess = answerEl.value.trim().toUpperCase();
+  const guess = answerEl.value.trim().toLowerCase();
   if (!guess) return;
   lastGuess = guess;
 
-  if (guess === currentWord) {
+  if (guess === currentWord.toLowerCase()) {
     score++;
     total++;
     scoreEl.textContent = score;
@@ -832,7 +831,7 @@ function checkAnswer() {
 }
 
 function giveUp() {
-  answerEl.value = currentWord;
+  answerEl.value = currentWord.toLowerCase();
   answerEl.disabled = true;
   checkBtn.disabled = true;
   feedbackEl.className = "feedback revealed";
