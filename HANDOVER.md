@@ -58,6 +58,10 @@ grade hypothesis. That distinction is the portfolio talking point.
 | Round size selector (5/10/20/∞) + progress + completion banner | shipped v1.2 |
 | Stat cards: Total / Correct / Accuracy | shipped v1.2 |
 | Response History table + localStorage persistence | shipped v1.2 |
+| Colorblind-friendly palette (Wong cyan + amber), indigo accent | shipped v1.3 |
+| Stat cards customized (multi-color values) | shipped v1.3 |
+| Lowercase labels, history rows tinted by outcome | shipped v1.3 |
+| IELTS Academic Core (100 words) pack alongside CET-4 | shipped v1.4 |
 | Check Answer (Enter key or button) | shipped |
 | Inline dictionary panel (dictionaryapi.dev) | shipped |
 | Merriam-Webster "deeper" link (new tab escape hatch) | shipped |
@@ -88,6 +92,45 @@ matches the "user controls pacing" decision.
 ---
 
 ## Decision log
+
+**2026-06-01 — v1.4 (IELTS Academic Core pack)**
+- Added **IELTS Academic Core (100)** as the second exam pack. Curated from
+  Coxhead's Academic Word List headwords, distributed across the alphabet.
+- Sits alongside CET-4 Core under the "Exam prep" optgroup.
+- Reason: CET-4 reads as China-specific to international hiring audiences.
+  IELTS is a globally recognized credential — keeping CET-4 for Echo's
+  personal practice, adding IELTS as the portfolio-facing default.
+- Inline JS fallback in `index.html` updated to include both exam packs
+  (with shorter starter lists) so file:// users still see the grouped
+  exam-pack optgroup.
+- No code or schema changes — pure data addition via the v1.1 packs schema.
+
+**2026-06-01 — v1.3 (colorblind palette + dashboard styling)**
+Driven by `aslfd_feedback.md`.
+- **Colorblind-friendly palette migration.** Red/green replaced with the Wong
+  blue+orange scheme: cyan `#0891b2` for correct, amber `#b45309` text on
+  `#fef3c7` bg for incorrect/gave-up. Icons (`✓` / `⊘`) carry meaning beyond
+  color — same accessibility contract Echo flagged.
+- **Indigo accent migration.** Primary `#4f46e5`, hover `#4338ca`. Replaces
+  the prior black accent. Adopted from Sigma design tokens Echo dropped in.
+- **Stat cards customized per `cards_demo.png`:** Total in dark ink, Correct
+  in cyan, Accuracy in indigo. Larger number sizing (40px, weight 700),
+  per-card classes `.stat-total / .stat-correct / .stat-accuracy`.
+- **Lowercased labels:** removed `text-transform: uppercase` from history
+  table headers and dict example labels. Letter-spacing tweaks reverted to 0.
+- **Color-coded history rows:** correct rows get cyan-tinted background +
+  left border, gave-up rows get amber-tinted background + left border.
+  Color reinforces icon, not replaces it.
+- **Results tab label** changed from pill badge to inline `Results (N)`
+  format matching the cards_demo screenshot.
+- **Dark mode tokens in Sigma's file are NOT applied** — single light theme
+  is enough for now, dark mode adds complexity without specific demand.
+- **Vocab API question** (CET vs international tests): no canonical API
+  exists for "all exam vocab." Confirmed by review — best path is curated
+  per-pack lists with `source` attribution. CET-4 kept for Echo's self-use.
+  Adding IELTS Academic or TOEFL as a parallel international-audience pack
+  is the next step if portfolio-positioning matters. Deferred to next
+  decision.
 
 **2026-06-01 — v1.2 (tabs + rounds + persistent dashboard)**
 - Added tabbed nav: **Practice** | **Results** (badge shows total attempts).

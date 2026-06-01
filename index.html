@@ -6,15 +6,32 @@
 <title>ASL Fingerspelling Practice</title>
 <style>
   :root {
-    --bg: #fafafa;
+    /* Base — Sigma-derived neutrals */
+    --bg: #f8f9fc;
     --card: #ffffff;
-    --ink: #1a1a1a;
-    --muted: #6b6b6b;
-    --line: #e6e6e6;
-    --accent: #1a1a1a;
-    --ok: #1f7a3a;
-    --no: #b3261e;
-    --soft: #f1f1f1;
+    --ink: #1a1f36;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --soft: #f1f5f9;
+
+    /* Primary — indigo */
+    --accent: #4f46e5;
+    --accent-hover: #4338ca;
+    --accent-soft: #e0e7ff;
+    --accent-emphasis: #4338ca;
+
+    /* Colorblind-safe correctness palette
+       Success = cyan (was green), Warning = amber (was red).
+       Blue+orange is the classic Wong palette for deuteranopia/protanopia.
+       Icons (✓ / ⊘) carry meaning beyond color. */
+    --ok: #0891b2;
+    --ok-bg: #ecfeff;
+    --ok-border: #a5f3fc;
+
+    --no: #b45309;          /* amber-700 — slightly darker than f59e0b for AA contrast on white */
+    --no-fg: #92400e;
+    --no-bg: #fef3c7;
+    --no-border: #fcd34d;
   }
   * { box-sizing: border-box; }
   body {
@@ -105,13 +122,13 @@
     cursor: pointer; margin-top: 12px;
   }
   .primary-btn:disabled { background: #b5b5b5; cursor: not-allowed; }
-  .primary-btn:hover:not(:disabled) { background: #333; }
+  .primary-btn:hover:not(:disabled) { background: var(--accent-hover); }
   .primary-btn.correct,
   .primary-btn.correct:disabled { background: var(--ok); color: #fff; cursor: default; }
 
   .feedback { margin-top: 16px; padding: 14px; border-radius: 8px; font-size: 15px; display: none; }
-  .feedback.correct { background: #e8f5ec; color: var(--ok); border: 1px solid #c6e6cf; display: block; }
-  .feedback.incorrect { background: #fceceb; color: var(--no); border: 1px solid #f3c4c0; display: block; }
+  .feedback.correct { background: var(--ok-bg); color: var(--ok); border: 1px solid var(--ok-border); display: block; }
+  .feedback.incorrect { background: var(--no-bg); color: var(--no-fg); border: 1px solid var(--no-border); display: block; }
   .feedback.revealed { background: var(--soft); color: var(--ink); border: 1px solid var(--line); display: block; }
 
   .action-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
@@ -123,8 +140,9 @@
   }
   .action-row button:hover, .action-row a:hover { background: var(--soft); }
   .action-row .next { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .action-row .next:hover { background: #333; }
-  .action-row .giveup { color: var(--no); border-color: #f3c4c0; }
+  .action-row .next:hover { background: var(--accent-hover); }
+  .action-row .giveup { color: var(--no-fg); border-color: var(--no-border); background: var(--no-bg); }
+  .action-row .giveup:hover { background: #fde68a; }
 
   .dict-panel {
     margin-top: 16px; padding: 16px; background: var(--soft); border-radius: 8px; display: none;
@@ -135,7 +153,7 @@
   .dict-pos { color: var(--muted); font-size: 13px; font-style: italic; margin-right: 6px; }
   .dict-def { margin: 6px 0; font-size: 15px; }
   .dict-examples { margin: 12px 0 0; }
-  .dict-examples-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 6px; }
+  .dict-examples-label { font-size: 13px; color: var(--muted); margin: 0 0 6px; font-weight: 500; }
   .dict-example { color: var(--muted); font-size: 14px; margin: 6px 0 0 0; padding-left: 12px; border-left: 2px solid var(--line); }
   .dict-example--empty { font-style: italic; color: #999; }
   .dict-mw { display: inline-block; margin-top: 12px; font-size: 13px; color: var(--muted); text-decoration: underline; }
@@ -167,12 +185,11 @@
     background: var(--card); color: var(--ink);
     box-shadow: 0 1px 3px rgba(0,0,0,.06);
   }
-  .tab-btn .badge {
-    background: var(--soft); border: 1px solid var(--line);
-    padding: 1px 8px; border-radius: 999px; font-size: 12px;
+  .tab-btn .count {
+    color: var(--muted); font-weight: 400;
     font-variant-numeric: tabular-nums;
   }
-  .tab-btn.active .badge { background: var(--bg); }
+  .tab-btn.active .count { color: var(--ink); }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 
@@ -193,25 +210,28 @@
     padding: 10px 16px; border-radius: 8px; border: none; cursor: pointer;
     background: var(--accent); color: #fff; font-size: 14px; font-weight: 500;
   }
-  .round-banner button:hover { background: #333; }
+  .round-banner button:hover { background: var(--accent-hover); }
 
   /* ── Stat cards ────────────────────────────────────── */
   .stats-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px;
   }
   @media (max-width: 540px) { .stats-grid { grid-template-columns: 1fr; } }
   .stat-card {
     background: var(--card); border: 1px solid var(--line); border-radius: 12px;
-    padding: 20px;
+    padding: 28px 24px;
   }
   .stat-label {
-    color: var(--muted); font-size: 13px; font-weight: 500; margin: 0 0 12px;
-    text-transform: none; letter-spacing: 0;
+    color: var(--ink); font-size: 15px; font-weight: 500; margin: 0 0 24px;
   }
   .stat-value {
-    font-size: 32px; font-weight: 600; letter-spacing: -0.02em; margin: 0;
-    color: var(--ink); font-variant-numeric: tabular-nums;
+    font-size: 40px; font-weight: 700; letter-spacing: -0.02em; margin: 0; line-height: 1;
+    font-variant-numeric: tabular-nums;
   }
+  /* Per-card accent colors matching the demo */
+  .stat-card.stat-total .stat-value    { color: var(--ink); }
+  .stat-card.stat-correct .stat-value  { color: var(--ok); }
+  .stat-card.stat-accuracy .stat-value { color: var(--accent); }
 
   /* ── History table ─────────────────────────────────── */
   .history-card {
@@ -226,27 +246,33 @@
     padding: 6px 10px; font-size: 12px; color: var(--muted); cursor: pointer;
     font-family: inherit;
   }
-  .history-clear:hover { color: var(--no); border-color: var(--no); }
+  .history-clear:hover { color: var(--no-fg); border-color: var(--no-border); background: var(--no-bg); }
   .history-empty {
     text-align: center; padding: 48px 16px; color: var(--muted);
   }
   .history-empty-icon { font-size: 32px; color: var(--line); margin-bottom: 8px; }
   .history-table { width: 100%; border-collapse: collapse; font-size: 14px; }
   .history-table th {
-    text-align: left; font-weight: 500; color: var(--muted); font-size: 12px;
-    text-transform: uppercase; letter-spacing: 0.06em;
-    padding: 8px 8px; border-bottom: 1px solid var(--line);
+    text-align: left; font-weight: 500; color: var(--muted); font-size: 13px;
+    padding: 10px 10px; border-bottom: 1px solid var(--line);
   }
   .history-table td {
-    padding: 10px 8px; border-bottom: 1px solid var(--line);
+    padding: 12px 10px; border-bottom: 1px solid var(--line);
     font-variant-numeric: tabular-nums;
   }
   .history-table tr:last-child td { border-bottom: none; }
+  /* Outcome-tinted row backgrounds for colorblind reinforcement */
+  .history-table tr.row-correct td { background: var(--ok-bg); }
+  .history-table tr.row-gaveup  td { background: var(--no-bg); }
+  .history-table tr.row-correct td:first-child,
+  .history-table tr.row-gaveup  td:first-child  { border-left: 3px solid; }
+  .history-table tr.row-correct td:first-child  { border-left-color: var(--ok); }
+  .history-table tr.row-gaveup  td:first-child  { border-left-color: var(--no); }
   .history-word { font-weight: 500; }
   .history-guess { color: var(--muted); font-family: ui-monospace, "SF Mono", Menlo, monospace; }
   .history-outcome { font-size: 13px; }
-  .history-outcome.ok { color: var(--ok); }
-  .history-outcome.no { color: var(--no); }
+  .history-outcome.ok { color: var(--ok); font-weight: 500; }
+  .history-outcome.no { color: var(--no-fg); font-weight: 500; }
   .history-pack { color: var(--muted); font-size: 12px; }
   .history-time { color: var(--muted); font-size: 12px; white-space: nowrap; }
 </style>
@@ -267,7 +293,7 @@
   </button>
   <button class="tab-btn" data-tab="results" role="tab" aria-selected="false">
     <span>Results</span>
-    <span class="badge" id="results-badge">0</span>
+    <span class="count">(<span id="results-badge">0</span>)</span>
   </button>
 </nav>
 
@@ -334,15 +360,15 @@
 <section id="tab-results" class="tab-panel">
 
 <div class="stats-grid">
-  <div class="stat-card">
+  <div class="stat-card stat-total">
     <p class="stat-label">Total Attempts</p>
     <p class="stat-value" id="stat-total">0</p>
   </div>
-  <div class="stat-card">
+  <div class="stat-card stat-correct">
     <p class="stat-label">Correct Answers</p>
     <p class="stat-value" id="stat-correct">0</p>
   </div>
-  <div class="stat-card">
+  <div class="stat-card stat-accuracy">
     <p class="stat-label">Accuracy</p>
     <p class="stat-value" id="stat-accuracy">0%</p>
   </div>
@@ -568,8 +594,9 @@ function renderHistory() {
   }
   const rows = attempts.slice().reverse().map(a => {
     const okClass = a.outcome === "correct" ? "ok" : "no";
+    const rowClass = a.outcome === "correct" ? "row-correct" : "row-gaveup";
     const icon = a.outcome === "correct" ? "✓ correct" : "⊘ gave up";
-    return `<tr>
+    return `<tr class="${rowClass}">
       <td class="history-word">${a.word}</td>
       <td class="history-guess">${a.lastGuess || "—"}</td>
       <td class="history-outcome ${okClass}">${icon}</td>
@@ -642,6 +669,8 @@ async function loadWords() {
         words: ["APPLE","TIGER","PIANO","CLOUD","RIVER","DREAM","FROST","MAPLE"] },
       { id: "len-6plus", name: "6+ letters", type: "length",
         words: ["COFFEE","PURPLE","GARDEN","PUZZLE","WONDER","JOURNEY","ECLIPSE","RAINBOW"] },
+      { id: "ielts-academic", name: "IELTS Academic Core", type: "exam",
+        words: ["ACADEMIC","ANALYZE","APPROACH","BENEFIT","CONCEPT","CONTEXT","DATA","EVALUATE","FACTOR","RESEARCH"] },
       { id: "cet-4", name: "CET-4 Core", type: "exam",
         words: ["ACCEPT","ACHIEVE","ANALYZE","APPROACH","BENEFIT","CHALLENGE","COMPARE","CONNECT","DEVELOP","ENSURE"] }
     ]);
