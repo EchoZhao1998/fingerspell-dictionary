@@ -45,7 +45,7 @@
     margin-right: auto;
     line-height: 1.5;
   }
-  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
   h1 { font-size: 28px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
   .subtitle { color: var(--muted); font-size: 15px; margin: 0; }
   .score-chip {
@@ -70,8 +70,10 @@
     opacity: 0; transition: opacity 0s linear;
   }
   .frame img { max-width: 60%; max-height: 75%; filter: invert(1) brightness(1.1); }
-  .frame.visible { opacity: 1; transition: opacity .25s ease-in-out; }
+  .frame.visible { opacity: 1; transform: scale(1); transition: opacity .25s ease-in-out, transform .12s ease-in-out; }
   .frame.partial { opacity: 0.4; transition: opacity .25s ease-in-out; }
+  /* dip = brief blink-out used to make consecutive same letters (APPLE, COFFEE) read as two strokes */
+  .frame.dip { opacity: 0.1; transform: scale(0.92); transition: opacity .08s ease-in, transform .08s ease-in; }
   .player-controls {
     position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 14px;
     background: linear-gradient(to top, rgba(0,0,0,.55), transparent);
@@ -173,7 +175,7 @@
     background: var(--soft); border-radius: 10px; margin: 24px 0;
   }
   .tab-btn {
-    flex: 1; padding: 10px 14px; border: none; background: transparent;
+    flex: 1; padding: 12px 14px; min-height: 44px; border: none; background: transparent;
     color: var(--muted); font-size: 14px; font-weight: 500; cursor: pointer;
     border-radius: 8px; transition: background .15s, color .15s;
     display: inline-flex; align-items: center; justify-content: center; gap: 6px;
@@ -250,7 +252,8 @@
     text-align: center; padding: 48px 16px; color: var(--muted);
   }
   .history-empty-icon { font-size: 32px; color: var(--line); margin-bottom: 8px; }
-  .history-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .history-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .history-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 480px; }
   .history-table th {
     text-align: left; font-weight: 500; color: var(--muted); font-size: 13px;
     padding: 10px 10px; border-bottom: 1px solid var(--line);
@@ -307,7 +310,6 @@
   <div class="player" id="player">
     <!-- 26 layered frames, one per letter, opacity-toggled -->
     <div class="player-controls">
-      <button id="play-pause">Replay</button>
       <span class="time" id="time">0.0s</span>
       <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
     </div>
@@ -323,10 +325,10 @@
     <select class="tier-select" id="pack" aria-label="Word pack">
       <!-- populated dynamically from words.json -->
     </select>
-    <select class="tier-select" id="round-size" aria-label="Words per round">
-      <option value="5">5 / round</option>
-      <option value="10" selected>10 / round</option>
-      <option value="20">20 / round</option>
+    <select class="tier-select" id="round-duration" aria-label="Round duration">
+      <option value="180">3 min round</option>
+      <option value="300">5 min round</option>
+      <option value="480" selected>8 min round</option>
       <option value="0">Unlimited</option>
     </select>
   </div>
@@ -420,9 +422,12 @@ let animDuration = 0;
 let currentReplays = 0;         // replays consumed for the current word
 let lastGuess = "";             // last input attempted on current word
 
-// Round state
-let roundSize = 10;             // 0 = unlimited
-let roundIndex = 0;             // 1-based, current word number in round
+// Round state — time-based (8-minute default)
+let roundDurationSec = 480;     // 0 = unlimited
+let roundStartTs = 0;           // ms timestamp when current round started
+let roundEndTimer = null;
+let roundTickTimer = null;
+let roundIndex = 0;             // 1-based word number within the round
 let roundCorrect = 0;           // correct answers in current round
 let roundFinalized = 0;         // total finalized words in current round
 let roundComplete = false;
@@ -470,7 +475,7 @@ const replayBtn = document.getElementById("replay-btn");
 const speedSlider = document.getElementById("speed");
 const speedLabel = document.getElementById("speed-label");
 const packSelect = document.getElementById("pack");
-const roundSizeSelect = document.getElementById("round-size");
+const roundDurationSelect = document.getElementById("round-duration");
 const roundProgressEl = document.getElementById("round-progress");
 const roundBanner = document.getElementById("round-banner");
 const roundBannerTitle = document.getElementById("round-banner-title");
@@ -493,7 +498,6 @@ const tabPanels = {
 };
 const timeEl = document.getElementById("time");
 const progressBar = document.getElementById("progress-bar");
-const playPauseBtn = document.getElementById("play-pause");
 
 // Speed handling
 speedSlider.addEventListener("input", e => {
@@ -507,9 +511,9 @@ packSelect.addEventListener("change", e => {
   startNewRound();
 });
 
-// Round-size handling
-roundSizeSelect.addEventListener("change", e => {
-  roundSize = parseInt(e.target.value, 10);
+// Round-duration handling
+roundDurationSelect.addEventListener("change", e => {
+  roundDurationSec = parseInt(e.target.value, 10);
   startNewRound();
 });
 
@@ -604,12 +608,14 @@ function renderHistory() {
     </tr>`;
   }).join("");
   historyBody.innerHTML = `
-    <table class="history-table">
-      <thead><tr>
-        <th>Word</th><th>Your answer</th><th>Outcome</th><th>Pack</th><th>When</th>
-      </tr></thead>
-      <tbody>${rows}</tbody>
-    </table>`;
+    <div class="history-scroll">
+      <table class="history-table">
+        <thead><tr>
+          <th>Word</th><th>Your answer</th><th>Outcome</th><th>Pack</th><th>When</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
 }
 function relTime(ts) {
   const s = Math.round((Date.now() - ts) / 1000);
@@ -620,35 +626,56 @@ function relTime(ts) {
   return d.toLocaleDateString() + " " + d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
 }
 
-// ── Round logic ──────────────────────────────────────
+// ── Round logic (time-based) ─────────────────────────
 function startNewRound() {
+  clearTimeout(roundEndTimer);
+  clearInterval(roundTickTimer);
   roundIndex = 0;
   roundCorrect = 0;
   roundFinalized = 0;
   roundComplete = false;
+  roundStartTs = Date.now();
   roundBanner.classList.remove("show");
+  if (roundDurationSec > 0) {
+    roundEndTimer = setTimeout(endRound, roundDurationSec * 1000);
+    roundTickTimer = setInterval(updateRoundProgress, 1000);
+  }
   loadNextWord();
 }
+function endRound() {
+  if (roundComplete) return;
+  roundComplete = true;
+  clearTimeout(roundEndTimer);
+  clearInterval(roundTickTimer);
+  const pct = roundFinalized ? Math.round((roundCorrect / roundFinalized) * 100) : 0;
+  const elapsedSec = Math.round((Date.now() - roundStartTs) / 1000);
+  roundBannerTitle.textContent = "Round complete";
+  roundBannerSub.textContent =
+    `${roundFinalized} ${roundFinalized === 1 ? "word" : "words"} attempted, ${roundCorrect} correct (${pct}%) in ${fmtMMSS(elapsedSec)}. See Results tab for full history.`;
+  roundBanner.classList.add("show");
+  answerEl.disabled = true;
+  checkBtn.disabled = true;
+  nextBtn.disabled = true;
+}
 function maybeEndRound() {
-  if (roundSize > 0 && roundFinalized >= roundSize) {
-    roundComplete = true;
-    const pct = Math.round((roundCorrect / roundFinalized) * 100);
-    roundBannerTitle.textContent = "Round complete";
-    roundBannerSub.textContent =
-      `${roundCorrect} of ${roundFinalized} correct (${pct}%) — see Results tab for full history.`;
-    roundBanner.classList.add("show");
-    // Lock the input area
-    answerEl.disabled = true;
-    checkBtn.disabled = true;
-    nextBtn.disabled = true;
-  }
+  // Time-based rounds end on timer, not on word count. No-op here.
+  // (Kept as a hook in case we add max-word safety caps later.)
 }
 function updateRoundProgress() {
-  if (roundSize > 0) {
-    roundProgressEl.textContent = `Word ${roundIndex} of ${roundSize}`;
+  if (roundComplete) return;
+  if (roundDurationSec > 0) {
+    const elapsedSec = Math.floor((Date.now() - roundStartTs) / 1000);
+    const remaining = Math.max(0, roundDurationSec - elapsedSec);
+    roundProgressEl.textContent = `Word ${Math.max(1, roundIndex)} · ${fmtMMSS(remaining)} left`;
+    if (remaining <= 0) endRound();
   } else {
-    roundProgressEl.textContent = `Word ${roundIndex} · unlimited`;
+    roundProgressEl.textContent = `Word ${Math.max(1, roundIndex)} · unlimited`;
   }
+}
+function fmtMMSS(totalSec) {
+  const m = Math.floor(totalSec / 60);
+  const s = totalSec % 60;
+  return `${m}:${String(s).padStart(2, "0")}`;
 }
 
 // Load word bank (v2 schema with packs array)
@@ -741,29 +768,45 @@ function animateWord(word, slowFactor = 1) {
   }, 60);
 
   let i = 0;
+  const dipMs = Math.max(60, Math.min(perLetterMs * 0.22, 220));
   function step() {
-    // Fade out previous
+    // Fade out previous (only when next letter differs — same letter handled below as a dip)
     if (i > 0) {
       const prev = word[i-1];
-      if (frameMap[prev]) {
+      const nextIsSame = i < word.length && word[i] === prev;
+      if (frameMap[prev] && !nextIsSame) {
         frameMap[prev].classList.remove("visible");
         frameMap[prev].classList.add("partial");
         setTimeout(() => frameMap[prev]?.classList.remove("partial"), perLetterMs * 0.4);
       }
     }
-    // Fade in current
+    // Render current
     if (i < word.length) {
       const cur = word[i];
-      if (frameMap[cur]) {
-        frameMap[cur].classList.remove("partial");
-        frameMap[cur].classList.add("visible");
+      const sameAsPrev = i > 0 && cur === word[i-1];
+      const f = frameMap[cur];
+      if (f) {
+        if (sameAsPrev) {
+          // Brief blink-out then reassert — re-articulates the same handshape so
+          // the user sees TWO of that letter instead of one held frame.
+          f.classList.remove("visible", "partial");
+          f.classList.add("dip");
+          setTimeout(() => {
+            if (!f) return;
+            f.classList.remove("dip");
+            f.classList.add("visible");
+          }, dipMs);
+        } else {
+          f.classList.remove("partial", "dip");
+          f.classList.add("visible");
+        }
       }
       i++;
       animationTimer = setTimeout(step, perLetterMs);
     } else {
       // Hold last letter briefly, then fade
       setTimeout(() => {
-        Object.values(frameMap).forEach(f => f.classList.remove("visible", "partial"));
+        Object.values(frameMap).forEach(fr => fr.classList.remove("visible", "partial", "dip"));
       }, perLetterMs * 0.6);
     }
   }
@@ -929,7 +972,6 @@ function replayCurrent() {
   animateWord(currentWord);
 }
 replayBtn.addEventListener("click", replayCurrent);
-playPauseBtn.addEventListener("click", replayCurrent);
 giveupBtn.addEventListener("click", giveUp);
 dictBtn.addEventListener("click", lookupWord);
 nextBtn.addEventListener("click", loadNextWord);
@@ -941,7 +983,7 @@ window.playAudio = playAudio;
 (async () => {
   loadAttempts();
   updateResultsBadge();
-  roundSize = parseInt(roundSizeSelect.value, 10);
+  roundDurationSec = parseInt(roundDurationSelect.value, 10);
   await loadWords();
   startNewRound();
 })();

@@ -1,9 +1,33 @@
 # fingerspell-dictionary — HANDOVER
 
+**Current version:** v1.6 (launch-ready)
 **v1 shipped:** 2026-06-01
 **Owner:** Echo Zhao
 **Lives at:** `Portofilo/fingerspell-dictionary/`
 **Indexed in:** `Portofilo/PORTOFILIO_HANDOVER.md`
+
+---
+
+## Launch status (2026-06-01)
+
+The tool is **launch-ready** as of v1.6. Sequence:
+
+1. **MATT Monash Discord** — accessibility community, lowest risk. Post first.
+2. **LinkedIn** — story-first framing (deaf student / holistic-fingerspell insight / friction-led design). Portfolio + employer signal.
+3. **Reddit** — r/deaf, r/ASL, r/learnASL. Strangers using it.
+4. **WeChat** — academic / Chinese-speaking peers if CET-4 angle is relevant.
+5. **Skip Facebook.**
+
+Launch-post drafting is deferred to the next chat (see "Chat handoff" below).
+
+## Chat handoff
+
+This chat (the "Portfolio tool" chat) handed off after v1.6 ship. Reasons it split here:
+- Tool reached a coherent shippable state.
+- Next work (launch posts, post-launch iteration) is conceptually a new phase.
+- Cold handoff possible because this HANDOVER captures every decision.
+
+Next chat should reopen with: launch post drafts (Discord, LinkedIn, Reddit) → ship them → iterate based on responses. PWA / mobile pivot is a separate scoping conversation only if launch feedback says users want it.
 
 ---
 
@@ -62,6 +86,10 @@ grade hypothesis. That distinction is the portfolio talking point.
 | Stat cards customized (multi-color values) | shipped v1.3 |
 | Lowercase labels, history rows tinted by outcome | shipped v1.3 |
 | IELTS Academic Core (100 words) pack alongside CET-4 | shipped v1.4 |
+| Time-based rounds (3 / 5 / 8 min / unlimited, 8 min default) | shipped v1.5 |
+| Redundant in-player Replay button removed | shipped v1.5 |
+| Mobile-readable polish (no PWA) | shipped v1.5 |
+| Same-letter re-articulation (dip transition for APPLE / COFFEE / BALLOON) | shipped v1.6 |
 | Check Answer (Enter key or button) | shipped |
 | Inline dictionary panel (dictionaryapi.dev) | shipped |
 | Merriam-Webster "deeper" link (new tab escape hatch) | shipped |
@@ -92,6 +120,44 @@ matches the "user controls pacing" decision.
 ---
 
 ## Decision log
+
+**2026-06-01 — v1.6 (same-letter re-articulation)**
+Resolves the known issue logged in v1.5.
+- When `word[i] === word[i-1]`, the next letter no longer reuses the
+  identical frame silently. Instead, the frame enters a brief `dip`
+  state (opacity 0.1, scale 0.92) then snaps back to `visible`.
+- Dip duration scales with letter speed:
+  `dipMs = clamp(perLetterMs * 0.22, 60, 220)` — at default speed ≈ 154ms.
+- The previous-letter fade-out is suppressed when the next letter is the
+  same; otherwise the dip wouldn't be visible.
+- Mimics ASL's natural double-articulation: signers re-stroke the
+  handshape for consecutive same letters rather than holding it.
+- Verified on APPLE at 2× speed: second P transitions visible → dip
+  (660ms) → visible (720ms). Score validity for words like APPLE, COFFEE,
+  BALLOON now matches the visible animation.
+
+**2026-06-01 — v1.5 (time-based rounds + mobile polish)**
+- **Rounds are now time-based, not word-count-based.** Selector becomes
+  3 / 5 / 8 / Unlimited minutes, with 8 min as the default. Echo's
+  rationale: practice happens in "crispy time" (short bursts), and 8 min
+  matches a real attention chunk.
+- **Live countdown in round-progress text:** "Word 3 · 5:42 left" while
+  the timer is running. Tick interval: 1s.
+- **Round-end trigger** switched from `roundFinalized >= roundSize` to
+  setTimeout at `roundDurationSec * 1000`. The interval also checks
+  in case the tab was backgrounded.
+- **Completion banner** now reads: "N words attempted, K correct (X%) in
+  M:SS." Replaces the old "N of M correct" format.
+- **Removed the small Replay button inside the player frame** — redundant
+  with the big "Replay Animation" button below. Player overlay now keeps
+  only time + progress bar.
+- **Mobile readability polish (no PWA yet):**
+  - Header wraps cleanly on narrow viewport (added `flex-wrap: wrap`).
+  - History table wrapped in `.history-scroll` for horizontal overflow.
+  - Tab buttons get `min-height: 44px` for tap-target compliance.
+  - Full PWA (offline + installable manifest) deferred to v2 after launch.
+
+**Known issue identified in v1.5, fixed in v1.6.**
 
 **2026-06-01 — v1.4 (IELTS Academic Core pack)**
 - Added **IELTS Academic Core (100)** as the second exam pack. Curated from
