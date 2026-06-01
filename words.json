@@ -38,6 +38,24 @@
       ]
     },
     {
+      "id": "ielts-academic",
+      "name": "IELTS Academic Core (100)",
+      "type": "exam",
+      "source": "Coxhead Academic Word List (AWL) headwords, hand-curated for IELTS Academic",
+      "words": [
+        "ACADEMIC", "ACCESS", "ACQUIRE", "AFFECT", "ANALYZE", "APPROACH", "AREA", "ASPECT", "ASSESS", "ASSIST",
+        "ASSUME", "AVAILABLE", "BENEFIT", "BUDGET", "CATEGORY", "CHAPTER", "COMMUNITY", "COMPLEX", "CONCEPT", "CONDUCT",
+        "CONSIST", "CONSTRUCT", "CONSUME", "CONTEXT", "CULTURE", "DATA", "DEFINE", "DERIVE", "DESIGN", "ECONOMY",
+        "ELEMENT", "ENVIRONMENT", "ESTABLISH", "EVALUATE", "EVIDENT", "EVOLVE", "EXPORT", "FACTOR", "FEATURE", "FINANCE",
+        "FOCUS", "FUNCTION", "GENERATE", "GLOBAL", "HENCE", "IDENTIFY", "IMPACT", "INCOME", "INDICATE", "INDIVIDUAL",
+        "INSTITUTE", "INTERPRET", "INVOLVE", "ISSUE", "ITEM", "JOURNAL", "LABOUR", "LECTURE", "LEGAL", "MAINTAIN",
+        "MAJOR", "METHOD", "NORMAL", "OBTAIN", "OCCUR", "OUTCOME", "PARTICIPATE", "PERCENT", "PERIOD", "POLICY",
+        "POSITIVE", "POTENTIAL", "PREVIOUS", "PRIMARY", "PROCESS", "PURCHASE", "RANGE", "REGION", "REGULATE", "RELEVANT",
+        "REQUIRE", "RESEARCH", "RESIDE", "RESOURCE", "RESPOND", "ROLE", "SECTOR", "SECURE", "SEEK", "SELECT",
+        "SIGNIFICANT", "SIMILAR", "SOURCE", "SPECIFIC", "STRATEGY", "STRUCTURE", "THEORY", "TRADITION", "TRANSFER", "VARY"
+      ]
+    },
+    {
       "id": "cet-4",
       "name": "CET-4 Core (100)",
       "type": "exam",
