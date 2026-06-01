@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "packs": [
+    {
+      "id": "len-3",
+      "name": "3 letters",
+      "type": "length",
+      "words": [
+        "CAT", "DOG", "SUN", "MAP", "BUS", "RED", "AIR", "TEA", "HOT",
+        "ICE", "OWL", "FOX", "BEE", "ANT", "EGG", "PEN", "CAR", "KEY", "BAG", "BOX"
+      ]
+    },
+    {
+      "id": "len-4",
+      "name": "4 letters",
+      "type": "length",
+      "words": [
+        "MOON", "RAIN", "BOOK", "FISH", "LIME", "STAR", "WOLF", "DESK", "LAMP", "FERN",
+        "JADE", "MILK", "WAVE", "QUIZ", "ZOOM", "JAZZ", "PINK", "RING", "SNOW", "WIND"
+      ]
+    },
+    {
+      "id": "len-5",
+      "name": "5 letters",
+      "type": "length",
+      "words": [
+        "APPLE", "TIGER", "PIANO", "CLOUD", "RIVER", "FLAME", "ROBIN", "OCEAN", "BREAD", "DREAM",
+        "STORM", "PLUMB", "CRISP", "SHINE", "GLASS", "QUILT", "FROST", "PEARL", "MAPLE", "SPICE"
+      ]
+    },
+    {
+      "id": "len-6plus",
+      "name": "6+ letters",
+      "type": "length",
+      "words": [
+        "COFFEE", "PURPLE", "GARDEN", "PUZZLE", "WONDER", "HARVEST", "JOURNEY", "MYSTERY", "OCTOPUS", "RAINBOW",
+        "SILENCE", "WHISPER", "ECLIPSE", "FIREFLY", "LANTERN", "MOUNTAIN", "TWILIGHT", "BLOSSOM", "ARCHIVE", "BALCONY"
+      ]
+    },
+    {
+      "id": "cet-4",
+      "name": "CET-4 Core (100)",
+      "type": "exam",
+      "source": "Common CET-4 high-frequency vocabulary, hand-curated",
+      "words": [
+        "ABANDON", "ABSORB", "ACCEPT", "ACHIEVE", "ADOPT", "ADVANCE", "AFFECT", "AGREE", "ALLOW", "AMUSE",
+        "ANALYZE", "ANNOUNCE", "APPLY", "APPROACH", "ARGUE", "ARRIVE", "ASSIST", "ASSUME", "ATTRACT", "AVOID",
+        "BALANCE", "BEHAVE", "BENEFIT", "BORROW", "BUDGET", "BURDEN", "CANCEL", "CAREER", "CASUAL", "CHARGE",
+        "CLAIM", "CLIMATE", "COMFORT", "COMMAND", "COMPARE", "COMPETE", "COMPLEX", "CONCEPT", "CONFIRM", "CONNECT",
+        "CONSUME", "CONTAIN", "CONTROL", "COURAGE", "CREATE", "CRISIS", "CULTURE", "DECIDE", "DEFEND", "DELIVER",
+        "DEMAND", "DEPEND", "DESIGN", "DEVELOP", "DIFFER", "DISPLAY", "DIVIDE", "ENABLE", "ENGAGE", "ENSURE",
+        "ENTIRE", "ESCAPE", "EVOLVE", "EXPAND", "EXPECT", "EXTEND", "FACTOR", "FAMOUS", "FAVOR", "FIGURE",
+        "FINANCE", "FLEXIBLE", "FOCUS", "FOREIGN", "FORMAL", "FORWARD", "GATHER", "GENTLE", "GLOBAL", "GOVERN",
+        "GRANT", "GUARANTEE", "GUIDE", "HABIT", "HANDLE", "HARVEST", "HEALTH", "HONEST", "HONOR", "IDEAL",
+        "IGNORE", "IMPACT", "IMPORT", "IMPROVE", "INCLUDE", "INCREASE", "INDEED", "INFORM", "INSIST", "INSPIRE"
+      ]
+    }
+  ]
+}

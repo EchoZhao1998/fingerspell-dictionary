@@ -1,0 +1,197 @@
+# fingerspell-dictionary — HANDOVER
+
+**v1 shipped:** 2026-06-01
+**Owner:** Echo Zhao
+**Lives at:** `Portofilo/fingerspell-dictionary/`
+**Indexed in:** `Portofilo/PORTOFILIO_HANDOVER.md`
+
+---
+
+## What this is
+
+A single-file HTML tool for **ASL fingerspelling recognition practice**, with
+an integrated EN-EN dictionary that kills the Eudic context-switch.
+
+User loop: watch animation → type the word → check → (replay infinitely OR
+give up to reveal) → optional inline dictionary lookup → next word.
+
+---
+
+## Why it exists (the problem)
+
+Echo practices ASL fingerspelling daily. When recognition fails on a strange
+word, the workflow breaks: switch to Eudic, search, return. The friction is
+the app switch. This tool collapses practice + dictionary into one surface.
+
+## The differentiation moat
+
+The "video" the user watches is **not a video** — it's a CSS overlap-fade
+animation generated from local SVG letter assets. This was a deliberate
+choice over external video footage because:
+
+1. **No asset dependency.** Zero licensing, zero scraping, fully offline-capable.
+2. **The morph rendering = the teaching mechanic.** Letters fade-overlap rather
+   than swap, demonstrating Echo's *holistic fingerspell gesture* insight
+   (deaf people read fingerspelling as continuous shape, not letter sequence).
+3. **Speed slider is the practice variable.** Users push speed over time;
+   that's how the daily-practice habit compounds.
+
+Without this rendering choice, the tool is a wrapper around dictionaryapi.dev
++ public SVGs. With it, it's a small but coherent expression of a research-
+grade hypothesis. That distinction is the portfolio talking point.
+
+---
+
+## v1 scope (shipped 2026-06-01)
+
+| Feature | State |
+|---|---|
+| 26 local ASL letter SVGs (Wikimedia, public domain) | shipped |
+| Layered fade-overlap animation engine | shipped |
+| Speed slider 0.5×–2× | shipped |
+| Replay-on-demand (unlimited) | shipped |
+| Give-up button → auto-fills the answer | shipped |
+| 4 length tiers (3, 4, 5, 6+ letters), 20 words each | shipped |
+| CET-4 Core pack (100 words, exam type) | shipped v1.1 |
+| Packs schema with optgroup'd selector (length / exam / category) | shipped v1.1 |
+| Tabbed Practice/Results UI | shipped v1.2 |
+| Round size selector (5/10/20/∞) + progress + completion banner | shipped v1.2 |
+| Stat cards: Total / Correct / Accuracy | shipped v1.2 |
+| Response History table + localStorage persistence | shipped v1.2 |
+| Check Answer (Enter key or button) | shipped |
+| Inline dictionary panel (dictionaryapi.dev) | shipped |
+| Merriam-Webster "deeper" link (new tab escape hatch) | shipped |
+| Score tracker (correct / total) | shipped |
+| Swiss-minimalist visual style | shipped |
+
+Score logic: `total` increments only on a final attempt (correct answer or
+give-up); incorrect attempts don't penalize and don't increment total. This
+matches the "user controls pacing" decision.
+
+---
+
+## v1.5 / v2 candidates (not built yet)
+
+- **Replay-slow with per-letter labels on give-up.** When user gives up,
+  auto-replay at half speed with letter overlay. Teaches the missed letter.
+- **Custom word list mode.** Paste-your-own-words (e.g., from Eudic recents).
+- **Streaks / daily heatmap.** Light gamification for retention.
+- **Edit-distance feedback.** "You got 4 of 5 letters" instead of binary.
+- **IPA + mouth-shape rendering** as primary pronunciation (deaf-built
+  dictionary framing). Audio button demoted further.
+- **Tier 2 morph.** Real SVG path interpolation via flubber.js between
+  redrawn simplified hand-outlines. Closer to the holistic-gesture insight,
+  but requires redrawing the SVGs as compatible paths.
+- **Curriculum / spaced repetition.** Track which words you've missed,
+  resurface them.
+
+---
+
+## Decision log
+
+**2026-06-01 — v1.2 (tabs + rounds + persistent dashboard)**
+- Added tabbed nav: **Practice** | **Results** (badge shows total attempts).
+- **Round size selector** (5 / 10 / 20 / Unlimited). Round progress
+  "Word N of M" replaces flat counter. Round-complete banner with
+  Start-new-round button.
+- **Results tab dashboard**: three stat cards (Total Attempts, Correct
+  Answers, Accuracy %) + Response History table (word, your answer,
+  outcome, pack, when). Clear-history button.
+- **localStorage persistence** under key `fsd_attempts_v1`. Each
+  finalized attempt (correct or gave-up) writes one row.
+  - Attempt shape: `{ word, packId, packName, lastGuess, outcome,
+    replays, ts }`. `outcome` is `correct` | `gaveup`.
+  - Replays tracked but not yet surfaced in the UI — future column.
+- **Theming deliberately deferred** — bikeshed risk. Style pass happens
+  after the first real practice session generates specific complaints.
+- Counter logic clarified: `total` and `score` only increment on
+  finalized attempts (correct or give-up). Wrong attempts before
+  surrendering aren't counted, by design.
+- Accuracy on Results tab = correct / total finalized. Whole-history
+  metric, not per-round. Per-round accuracy lives in the completion
+  banner only.
+
+**2026-06-01 — v1.1 (schema refactor + first vocab pack)**
+- Migrated `words.json` from flat tier keys to a `packs` array (schemaVersion 2).
+  Each pack now has `id`, `name`, `type` (length / exam / category / custom),
+  optional `source`, and `words`. UI selector becomes optgroup'd by type.
+- Added **CET-4 Core (100)** pack — hand-curated high-frequency CET-4 vocab.
+  First exam-prep pack. Validates the type-axis works.
+- Pushed back on building IELTS / TOEFL / category packs at the same time:
+  daily-use friction log should drive the next pack choice, not assumption.
+- Git repo initialized 2026-06-01 (commands run on host, not sandbox — FUSE
+  mount blocks git's atomic temp-file operations). Pushed to GitHub as
+  `fingerspell-dictionary` (public).
+
+**2026-06-01 — v1.0.1 patch (Echo iteration)**
+- Check Answer button turns green + label flips to "✓ Correct" on success.
+  Resets on Next Word. Visual reinforcement of success.
+- Dictionary panel now collects up to 3 unique example sentences across all
+  meanings/definitions of the entry. Falls back to a quiet "no example
+  sentences available" line when the API returns none.
+- CSS still inline (single-file portability over separation; revisit when
+  CSS > ~500 lines or a second HTML page exists).
+
+**2026-06-01 — Build approach**
+Chose Tier 1 morph (CSS overlap-fade) over Tier 2 (flubber.js path morph).
+*Why:* Tier 1 ships in v1 at ~10% of Tier 2's cost while still demonstrating
+the holistic-gesture insight. Tier 2 is a v2+ investment.
+
+**2026-06-01 — Pivot from "type a word, see it spelled" to "watch and guess"**
+Original Gemini spec was input-driven (Echo types a word → sees ASL spelling +
+definition). Echo pivoted to recognition-practice (watch → guess → check).
+*Why:* matches Echo's actual daily-practice habit. Original mode might return
+as a "Learn" toggle in v1.5.
+
+**2026-06-01 — "Video" is generated, not external**
+Mockup said "video." Asset reality: no video. Solution: render SVG morph
+inside a video-styled player (play/replay controls, time bar, progress).
+*Why:* preserves the practice-style UI without external-asset dependency,
+and turns the morph rendering into the core mechanic instead of decoration.
+
+**2026-06-01 — Inline dictionary, M-W as escape**
+Mockup specced new-tab → Merriam-Webster. Pushed back: new-tab IS an app
+switch, which is the friction Echo is trying to eliminate. Inline panel
+(dictionaryapi.dev) + small "deeper → M-W" link. Best of both.
+
+**2026-06-01 — Wrong answer = user-controlled, not auto-replay**
+Echo overrode the suggested auto-replay-on-fail with: user can replay
+infinitely, "give up" auto-fills the answer.
+*Why:* respects the user's pacing. Auto-replay implies "the tool decides
+when you're allowed to learn"; manual replay respects "I decide when I
+surrender."
+
+---
+
+## Friction log
+
+_Populate this section during daily use. Each entry is a one-liner about
+something that broke the practice flow. v2 design will be driven by this log._
+
+- _(empty — start logging after first practice session)_
+
+---
+
+## How to run
+
+```
+# from this folder:
+python3 -m http.server 8765
+# then open http://localhost:8765
+```
+
+`file://` will also work, but `fetch('words.json')` may be blocked by CORS
+on some browsers — the JS has an inline fallback word list for that case.
+
+---
+
+## Tech notes
+
+- Single-file `index.html` (HTML + CSS + JS, no framework).
+- `words.json` loaded via fetch with inline fallback.
+- 26 SVGs preloaded as layered `<div class="frame">` elements; animation
+  toggles `.visible` / `.partial` classes.
+- Animation timing: `700ms / speed` per letter, with overlap-fade controlled
+  by CSS transitions.
+- Dictionary: `https://api.dictionaryapi.dev/api/v2/entries/en/{word}` —
+  free, no key, but rate limits exist. Falls back to M-W link on failure.

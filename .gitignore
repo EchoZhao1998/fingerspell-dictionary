@@ -1,0 +1,19 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local server / build artifacts
+node_modules/
+dist/
+build/
+
+# Local handover scratch (keep HANDOVER.md, ignore drafts)
+*.handover.draft.md
