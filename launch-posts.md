@@ -22,7 +22,7 @@ Most language-learning advice assumes you can hear.
 
 Mine stopped working when I lost my hearing.
 
-As a Chinese-native student studying in English, I still needed to expand my vocabulary after becoming deaf. If anything, it became more important. That's one reason I started learning ASL—not only as a way to communicate, but also as a way to rebuild a language-learning process that no longer depended on sound.
+As a Chinese-native student studying in English, I must continue to improve my English skills after becoming deaf. If anything, it became more important. That's one reason I started learning ASL—not only as a way to communicate, but also as a way to rebuild a language-learning process that no longer depended on sound.
 
 Over time, I realised ASL learning and English learning were deeply connected. The richer my English vocabulary became, the easier it was to express ideas through sign. When vocabulary was missing, communication often fell back to fingerspelling. Vocabulary remained the foundation.
 
@@ -34,13 +34,15 @@ Another observation shaped the design itself. Fluent signers seem to recognise f
 
 Features such as replay controls, timed practice rounds, vocabulary packs, and response history all emerged from my own daily learning frustrations.
 
-I'm currently completing a Master of Data Science at Monash University and became deaf during my study. Learning ASL has been part of learning how to communicate, participate in Deaf culture, and adapt to a world without sound.
+It is a hard time that became deaf during my studies. However, I regard it as another opportunity to learn and explore the world.
 
 This project is a small experiment in that journey.
 
-[LINK](https://echozhao1998.github.io/fingerspell-dictionary/)
+[LINK](https://lnkd.in/gtgQNzZa)
 
-I'd love feedback from Deaf signers, sign-language educators, accessibility practitioners, HCI researchers, and anyone interested in language learning or inclusive design.
+I'd love feedback from Deaf signers, sign-language educators, accessibility practitioners, HCI researchers, and anyone interested in language learning or inclusive design. 🤟
+
+#Accessibility #InclusiveDesign #HumanComputerInteraction #DeafCommunity #LanguageLearning
 
 ---
 

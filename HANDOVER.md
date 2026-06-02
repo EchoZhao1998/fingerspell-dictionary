@@ -18,7 +18,17 @@ The tool is **launch-ready** as of v1.6. Sequence:
 4. **WeChat** — academic / Chinese-speaking peers if CET-4 angle is relevant.
 5. **Skip Facebook.**
 
-Launch-post drafting is deferred to the next chat (see "Chat handoff" below).
+**Launch-post drafts: ready.** See `launch-posts.md` in this folder for the three drafts (Discord / LinkedIn / Reddit). Replace `[LINK]` with the deployed URL before posting.
+
+## Open question — Willoughby follow-up (planted 2026-06-01)
+
+Echo is wondering how to use this tool as a follow-up touchpoint to A/Prof Louisa Willoughby (Monash Linguistics outreach, initiated 2026-05-27 — see memory `project-willoughby-outreach`). The connection is real and direct: the tool is the *artifact* expression of the holistic-fingerspell-gesture insight that was supposed to lead the academic outreach in the first place (see memory `project-cognitive-insight-fingerspell`). Open angles for the next chat to pick up:
+
+- Forward the LinkedIn post link + tool URL as a short follow-up email ("you may find this tangible expression of the question I raised in my earlier note useful")?
+- Position the tool as the v1 prototype that motivates a Phase 2 controlled study (the PhD-shaped research question from the cognitive-insight memory)?
+- Or wait until Willoughby replies to the initial cold email before adding a second touchpoint — second cold message risks looking like over-eagerness?
+
+Decision deferred. Echo should think about whether this belongs in the PhD-Track chat (supervisor outreach) or the Self-website-refine chat (portfolio link strategy). Either way, **don't lose this thread** — the holistic-gesture insight is the strongest single signal Echo has, and this tool is now its public proof.
 
 ## Chat handoff
 
