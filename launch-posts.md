@@ -48,7 +48,7 @@ I'd love feedback from Deaf signers, sign-language educators, accessibility prac
 
 ## 3. Reddit r/learnASL (peer-to-peer, honest about limits)
 
-**Title:** Built a fingerspelling recognition tool for my own practice — sharing in case it helps
+**Title:** Built a fingerspelling recognition tool for practice english as non-English native speaker
 
 Hey r/learnASL —
 
