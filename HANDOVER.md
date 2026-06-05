@@ -1,6 +1,6 @@
 # fingerspell-dictionary — HANDOVER
 
-**Current version:** v1.6 (launch-ready)
+**Current version:** v1.7 (modes + ASL-LEX integration)
 **v1 shipped:** 2026-06-01
 **Owner:** Echo Zhao
 **Lives at:** `Portofilo/fingerspell-dictionary/`
@@ -130,6 +130,51 @@ matches the "user controls pacing" decision.
 ---
 
 ## Decision log
+
+**2026-06-04 — v1.7 (Practice/Challenge modes + ASL-LEX integration)**
+Driven by `aslfd_feedback.md` (2026-06-04). Built after launch got no response;
+goal is to deepen the use experience.
+- **Practice vs Challenge mode split.** New top-level toggle.
+  - *Practice*: untimed, any pack, all aids (dictionary + real-sign link),
+    keyboard-driven. The duration selector is hidden. Resolves Echo's
+    "explore-vs-compete" tension — practice is the "general mode" he wanted.
+  - *Challenge*: timed round (3/5/8 min). Pack + speed **lock** for the
+    duration ("if time-bound, limit the package"), and each completed round is
+    saved as one submission. The "Unlimited" duration option was removed from
+    the selector (Practice already covers untimed).
+  - Mode persists in `localStorage` (`fsd_mode_v1`).
+- **Per-session submissions (Kaggle-style).** New `fsd_submissions_v1` store.
+  Each finished Challenge round → one row (pack, speed, score, accuracy, time,
+  when) in a new "Challenge submissions" table on Results. All-time stat cards
+  + full attempt history kept on top — both views coexist, as agreed.
+- **Keyboard-driven Next.** On a finalized word (correct or gave-up) focus
+  moves to the Next button, so a single Enter advances; loadNextWord refocuses
+  the input. No global key handler (avoids double-advance). Verified via jsdom.
+- **Alphabet cheat-sheet.** "🔤 Alphabet" button opens a modal showing
+  `assets/Asl_alphabet_gallaudet.svg.png` (Esc / click-outside / × to close).
+- **ASL-LEX 2.0 integration.** Four new packs under a new "Real ASL signs
+  (ASL-LEX)" optgroup: 3 / 4 / 5 / 6+ letters (505 words total, capped ~120-148
+  per length, sorted common-first by English word frequency for accessible
+  English level). After an answer is revealed, a **"See the real ASL sign ↗"**
+  link deep-links to `asl-lex.org/visualization/?sign=<EntryID>` (verified the
+  param resolves, incl. disambiguated glosses like `what_1` — the SPA just
+  needs ~6-8s to render).
+  - *Data pipeline:* pulled `sign_props.json` from the ASL-LEX visualization,
+    used `EntryID` as both the spelled word (suffix stripped, uppercased,
+    pure-alpha only) and the deep-link gloss; dropped 295 multi-word phrases,
+    deduped `_1/_2` variants (kept highest sign-frequency), filtered profanity
+    (BITCH/DAMN/HELL). Existing curated length + exam packs kept untouched so
+    the two sets don't "conflict" — they're separate, clearly-labelled groups.
+  - **schemaVersion bumped to 3:** a pack's `words` entry may now be a plain
+    string OR `{w, s}` (word + ASL-LEX sign gloss). `pickWord` normalises both.
+- **⚠ LICENSE NOTE (important for the monetization goal).** ASL-LEX is
+  **CC BY-NC 4.0 — NonCommercial**; sign videos are © ASL-LEX and may not be
+  redistributed. This tool is a free, attributed, educational/portfolio piece,
+  and it only *links out* to the videos, so it's within bounds. But the
+  ASL-LEX-derived packs **cannot be used in a commercial/paid product.** If
+  Echo ever monetizes this, the ASL-LEX packs must be removed or relicensed;
+  the curated length/exam packs are Echo's own and are unaffected. Attribution
+  added in the "How to use" footer.
 
 **2026-06-01 — v1.6 (same-letter re-articulation)**
 Resolves the known issue logged in v1.5.

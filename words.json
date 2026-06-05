@@ -1,13 +1,31 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "packs": [
     {
       "id": "len-3",
       "name": "3 letters",
       "type": "length",
       "words": [
-        "CAT", "DOG", "SUN", "MAP", "BUS", "RED", "AIR", "TEA", "HOT",
-        "ICE", "OWL", "FOX", "BEE", "ANT", "EGG", "PEN", "CAR", "KEY", "BAG", "BOX"
+        "CAT",
+        "DOG",
+        "SUN",
+        "MAP",
+        "BUS",
+        "RED",
+        "AIR",
+        "TEA",
+        "HOT",
+        "ICE",
+        "OWL",
+        "FOX",
+        "BEE",
+        "ANT",
+        "EGG",
+        "PEN",
+        "CAR",
+        "KEY",
+        "BAG",
+        "BOX"
       ]
     },
     {
@@ -15,8 +33,26 @@
       "name": "4 letters",
       "type": "length",
       "words": [
-        "MOON", "RAIN", "BOOK", "FISH", "LIME", "STAR", "WOLF", "DESK", "LAMP", "FERN",
-        "JADE", "MILK", "WAVE", "QUIZ", "ZOOM", "JAZZ", "PINK", "RING", "SNOW", "WIND"
+        "MOON",
+        "RAIN",
+        "BOOK",
+        "FISH",
+        "LIME",
+        "STAR",
+        "WOLF",
+        "DESK",
+        "LAMP",
+        "FERN",
+        "JADE",
+        "MILK",
+        "WAVE",
+        "QUIZ",
+        "ZOOM",
+        "JAZZ",
+        "PINK",
+        "RING",
+        "SNOW",
+        "WIND"
       ]
     },
     {
@@ -24,8 +60,26 @@
       "name": "5 letters",
       "type": "length",
       "words": [
-        "APPLE", "TIGER", "PIANO", "CLOUD", "RIVER", "FLAME", "ROBIN", "OCEAN", "BREAD", "DREAM",
-        "STORM", "PLUMB", "CRISP", "SHINE", "GLASS", "QUILT", "FROST", "PEARL", "MAPLE", "SPICE"
+        "APPLE",
+        "TIGER",
+        "PIANO",
+        "CLOUD",
+        "RIVER",
+        "FLAME",
+        "ROBIN",
+        "OCEAN",
+        "BREAD",
+        "DREAM",
+        "STORM",
+        "PLUMB",
+        "CRISP",
+        "SHINE",
+        "GLASS",
+        "QUILT",
+        "FROST",
+        "PEARL",
+        "MAPLE",
+        "SPICE"
       ]
     },
     {
@@ -33,8 +87,26 @@
       "name": "6+ letters",
       "type": "length",
       "words": [
-        "COFFEE", "PURPLE", "GARDEN", "PUZZLE", "WONDER", "HARVEST", "JOURNEY", "MYSTERY", "OCTOPUS", "RAINBOW",
-        "SILENCE", "WHISPER", "ECLIPSE", "FIREFLY", "LANTERN", "MOUNTAIN", "TWILIGHT", "BLOSSOM", "ARCHIVE", "BALCONY"
+        "COFFEE",
+        "PURPLE",
+        "GARDEN",
+        "PUZZLE",
+        "WONDER",
+        "HARVEST",
+        "JOURNEY",
+        "MYSTERY",
+        "OCTOPUS",
+        "RAINBOW",
+        "SILENCE",
+        "WHISPER",
+        "ECLIPSE",
+        "FIREFLY",
+        "LANTERN",
+        "MOUNTAIN",
+        "TWILIGHT",
+        "BLOSSOM",
+        "ARCHIVE",
+        "BALCONY"
       ]
     },
     {
@@ -43,16 +115,106 @@
       "type": "exam",
       "source": "Coxhead Academic Word List (AWL) headwords, hand-curated for IELTS Academic",
       "words": [
-        "ACADEMIC", "ACCESS", "ACQUIRE", "AFFECT", "ANALYZE", "APPROACH", "AREA", "ASPECT", "ASSESS", "ASSIST",
-        "ASSUME", "AVAILABLE", "BENEFIT", "BUDGET", "CATEGORY", "CHAPTER", "COMMUNITY", "COMPLEX", "CONCEPT", "CONDUCT",
-        "CONSIST", "CONSTRUCT", "CONSUME", "CONTEXT", "CULTURE", "DATA", "DEFINE", "DERIVE", "DESIGN", "ECONOMY",
-        "ELEMENT", "ENVIRONMENT", "ESTABLISH", "EVALUATE", "EVIDENT", "EVOLVE", "EXPORT", "FACTOR", "FEATURE", "FINANCE",
-        "FOCUS", "FUNCTION", "GENERATE", "GLOBAL", "HENCE", "IDENTIFY", "IMPACT", "INCOME", "INDICATE", "INDIVIDUAL",
-        "INSTITUTE", "INTERPRET", "INVOLVE", "ISSUE", "ITEM", "JOURNAL", "LABOUR", "LECTURE", "LEGAL", "MAINTAIN",
-        "MAJOR", "METHOD", "NORMAL", "OBTAIN", "OCCUR", "OUTCOME", "PARTICIPATE", "PERCENT", "PERIOD", "POLICY",
-        "POSITIVE", "POTENTIAL", "PREVIOUS", "PRIMARY", "PROCESS", "PURCHASE", "RANGE", "REGION", "REGULATE", "RELEVANT",
-        "REQUIRE", "RESEARCH", "RESIDE", "RESOURCE", "RESPOND", "ROLE", "SECTOR", "SECURE", "SEEK", "SELECT",
-        "SIGNIFICANT", "SIMILAR", "SOURCE", "SPECIFIC", "STRATEGY", "STRUCTURE", "THEORY", "TRADITION", "TRANSFER", "VARY"
+        "ACADEMIC",
+        "ACCESS",
+        "ACQUIRE",
+        "AFFECT",
+        "ANALYZE",
+        "APPROACH",
+        "AREA",
+        "ASPECT",
+        "ASSESS",
+        "ASSIST",
+        "ASSUME",
+        "AVAILABLE",
+        "BENEFIT",
+        "BUDGET",
+        "CATEGORY",
+        "CHAPTER",
+        "COMMUNITY",
+        "COMPLEX",
+        "CONCEPT",
+        "CONDUCT",
+        "CONSIST",
+        "CONSTRUCT",
+        "CONSUME",
+        "CONTEXT",
+        "CULTURE",
+        "DATA",
+        "DEFINE",
+        "DERIVE",
+        "DESIGN",
+        "ECONOMY",
+        "ELEMENT",
+        "ENVIRONMENT",
+        "ESTABLISH",
+        "EVALUATE",
+        "EVIDENT",
+        "EVOLVE",
+        "EXPORT",
+        "FACTOR",
+        "FEATURE",
+        "FINANCE",
+        "FOCUS",
+        "FUNCTION",
+        "GENERATE",
+        "GLOBAL",
+        "HENCE",
+        "IDENTIFY",
+        "IMPACT",
+        "INCOME",
+        "INDICATE",
+        "INDIVIDUAL",
+        "INSTITUTE",
+        "INTERPRET",
+        "INVOLVE",
+        "ISSUE",
+        "ITEM",
+        "JOURNAL",
+        "LABOUR",
+        "LECTURE",
+        "LEGAL",
+        "MAINTAIN",
+        "MAJOR",
+        "METHOD",
+        "NORMAL",
+        "OBTAIN",
+        "OCCUR",
+        "OUTCOME",
+        "PARTICIPATE",
+        "PERCENT",
+        "PERIOD",
+        "POLICY",
+        "POSITIVE",
+        "POTENTIAL",
+        "PREVIOUS",
+        "PRIMARY",
+        "PROCESS",
+        "PURCHASE",
+        "RANGE",
+        "REGION",
+        "REGULATE",
+        "RELEVANT",
+        "REQUIRE",
+        "RESEARCH",
+        "RESIDE",
+        "RESOURCE",
+        "RESPOND",
+        "ROLE",
+        "SECTOR",
+        "SECURE",
+        "SEEK",
+        "SELECT",
+        "SIGNIFICANT",
+        "SIMILAR",
+        "SOURCE",
+        "SPECIFIC",
+        "STRATEGY",
+        "STRUCTURE",
+        "THEORY",
+        "TRADITION",
+        "TRANSFER",
+        "VARY"
       ]
     },
     {
@@ -61,16 +223,2158 @@
       "type": "exam",
       "source": "Common CET-4 high-frequency vocabulary, hand-curated",
       "words": [
-        "ABANDON", "ABSORB", "ACCEPT", "ACHIEVE", "ADOPT", "ADVANCE", "AFFECT", "AGREE", "ALLOW", "AMUSE",
-        "ANALYZE", "ANNOUNCE", "APPLY", "APPROACH", "ARGUE", "ARRIVE", "ASSIST", "ASSUME", "ATTRACT", "AVOID",
-        "BALANCE", "BEHAVE", "BENEFIT", "BORROW", "BUDGET", "BURDEN", "CANCEL", "CAREER", "CASUAL", "CHARGE",
-        "CLAIM", "CLIMATE", "COMFORT", "COMMAND", "COMPARE", "COMPETE", "COMPLEX", "CONCEPT", "CONFIRM", "CONNECT",
-        "CONSUME", "CONTAIN", "CONTROL", "COURAGE", "CREATE", "CRISIS", "CULTURE", "DECIDE", "DEFEND", "DELIVER",
-        "DEMAND", "DEPEND", "DESIGN", "DEVELOP", "DIFFER", "DISPLAY", "DIVIDE", "ENABLE", "ENGAGE", "ENSURE",
-        "ENTIRE", "ESCAPE", "EVOLVE", "EXPAND", "EXPECT", "EXTEND", "FACTOR", "FAMOUS", "FAVOR", "FIGURE",
-        "FINANCE", "FLEXIBLE", "FOCUS", "FOREIGN", "FORMAL", "FORWARD", "GATHER", "GENTLE", "GLOBAL", "GOVERN",
-        "GRANT", "GUARANTEE", "GUIDE", "HABIT", "HANDLE", "HARVEST", "HEALTH", "HONEST", "HONOR", "IDEAL",
-        "IGNORE", "IMPACT", "IMPORT", "IMPROVE", "INCLUDE", "INCREASE", "INDEED", "INFORM", "INSIST", "INSPIRE"
+        "ABANDON",
+        "ABSORB",
+        "ACCEPT",
+        "ACHIEVE",
+        "ADOPT",
+        "ADVANCE",
+        "AFFECT",
+        "AGREE",
+        "ALLOW",
+        "AMUSE",
+        "ANALYZE",
+        "ANNOUNCE",
+        "APPLY",
+        "APPROACH",
+        "ARGUE",
+        "ARRIVE",
+        "ASSIST",
+        "ASSUME",
+        "ATTRACT",
+        "AVOID",
+        "BALANCE",
+        "BEHAVE",
+        "BENEFIT",
+        "BORROW",
+        "BUDGET",
+        "BURDEN",
+        "CANCEL",
+        "CAREER",
+        "CASUAL",
+        "CHARGE",
+        "CLAIM",
+        "CLIMATE",
+        "COMFORT",
+        "COMMAND",
+        "COMPARE",
+        "COMPETE",
+        "COMPLEX",
+        "CONCEPT",
+        "CONFIRM",
+        "CONNECT",
+        "CONSUME",
+        "CONTAIN",
+        "CONTROL",
+        "COURAGE",
+        "CREATE",
+        "CRISIS",
+        "CULTURE",
+        "DECIDE",
+        "DEFEND",
+        "DELIVER",
+        "DEMAND",
+        "DEPEND",
+        "DESIGN",
+        "DEVELOP",
+        "DIFFER",
+        "DISPLAY",
+        "DIVIDE",
+        "ENABLE",
+        "ENGAGE",
+        "ENSURE",
+        "ENTIRE",
+        "ESCAPE",
+        "EVOLVE",
+        "EXPAND",
+        "EXPECT",
+        "EXTEND",
+        "FACTOR",
+        "FAMOUS",
+        "FAVOR",
+        "FIGURE",
+        "FINANCE",
+        "FLEXIBLE",
+        "FOCUS",
+        "FOREIGN",
+        "FORMAL",
+        "FORWARD",
+        "GATHER",
+        "GENTLE",
+        "GLOBAL",
+        "GOVERN",
+        "GRANT",
+        "GUARANTEE",
+        "GUIDE",
+        "HABIT",
+        "HANDLE",
+        "HARVEST",
+        "HEALTH",
+        "HONEST",
+        "HONOR",
+        "IDEAL",
+        "IGNORE",
+        "IMPACT",
+        "IMPORT",
+        "IMPROVE",
+        "INCLUDE",
+        "INCREASE",
+        "INDEED",
+        "INFORM",
+        "INSIST",
+        "INSPIRE"
+      ]
+    },
+    {
+      "id": "asllex-3",
+      "name": "ASL-LEX · 3 letters",
+      "type": "asllex",
+      "source": "ASL-LEX 2.0 (Sevcikova Sehyr et al., 2021) — CC BY-NC 4.0",
+      "words": [
+        {
+          "w": "YOU",
+          "s": "you"
+        },
+        {
+          "w": "AND",
+          "s": "and"
+        },
+        {
+          "w": "FOR",
+          "s": "for"
+        },
+        {
+          "w": "NOT",
+          "s": "not"
+        },
+        {
+          "w": "CAN",
+          "s": "can"
+        },
+        {
+          "w": "ALL",
+          "s": "all"
+        },
+        {
+          "w": "GET",
+          "s": "get"
+        },
+        {
+          "w": "BUT",
+          "s": "but"
+        },
+        {
+          "w": "OUT",
+          "s": "out"
+        },
+        {
+          "w": "NOW",
+          "s": "now"
+        },
+        {
+          "w": "ONE",
+          "s": "one"
+        },
+        {
+          "w": "HOW",
+          "s": "how_2"
+        },
+        {
+          "w": "SEE",
+          "s": "see"
+        },
+        {
+          "w": "WHY",
+          "s": "why"
+        },
+        {
+          "w": "WHO",
+          "s": "who"
+        },
+        {
+          "w": "HIS",
+          "s": "his"
+        },
+        {
+          "w": "YES",
+          "s": "yes"
+        },
+        {
+          "w": "MAN",
+          "s": "man"
+        },
+        {
+          "w": "WAY",
+          "s": "way"
+        },
+        {
+          "w": "OUR",
+          "s": "our"
+        },
+        {
+          "w": "OFF",
+          "s": "off"
+        },
+        {
+          "w": "ANY",
+          "s": "any"
+        },
+        {
+          "w": "TWO",
+          "s": "two"
+        },
+        {
+          "w": "GOD",
+          "s": "god"
+        },
+        {
+          "w": "PUT",
+          "s": "put"
+        },
+        {
+          "w": "DAY",
+          "s": "day"
+        },
+        {
+          "w": "NEW",
+          "s": "new"
+        },
+        {
+          "w": "BIG",
+          "s": "big"
+        },
+        {
+          "w": "OLD",
+          "s": "old"
+        },
+        {
+          "w": "BAD",
+          "s": "bad"
+        },
+        {
+          "w": "BOY",
+          "s": "boy"
+        },
+        {
+          "w": "ASK",
+          "s": "ask"
+        },
+        {
+          "w": "CAR",
+          "s": "car"
+        },
+        {
+          "w": "TRY",
+          "s": "try"
+        },
+        {
+          "w": "OWN",
+          "s": "own"
+        },
+        {
+          "w": "SON",
+          "s": "son"
+        },
+        {
+          "w": "SAW",
+          "s": "saw_2"
+        },
+        {
+          "w": "RUN",
+          "s": "run"
+        },
+        {
+          "w": "USE",
+          "s": "use"
+        },
+        {
+          "w": "KID",
+          "s": "kid"
+        },
+        {
+          "w": "SIT",
+          "s": "sit"
+        },
+        {
+          "w": "FEW",
+          "s": "few"
+        },
+        {
+          "w": "HIT",
+          "s": "hit_1"
+        },
+        {
+          "w": "END",
+          "s": "end"
+        },
+        {
+          "w": "DIE",
+          "s": "die"
+        },
+        {
+          "w": "PAY",
+          "s": "pay"
+        },
+        {
+          "w": "EAT",
+          "s": "eat_1"
+        },
+        {
+          "w": "FUN",
+          "s": "fun"
+        },
+        {
+          "w": "CUT",
+          "s": "cut_2"
+        },
+        {
+          "w": "FAR",
+          "s": "far"
+        },
+        {
+          "w": "GUN",
+          "s": "gun_3"
+        },
+        {
+          "w": "SIX",
+          "s": "six"
+        },
+        {
+          "w": "DOG",
+          "s": "dog"
+        },
+        {
+          "w": "BUY",
+          "s": "buy"
+        },
+        {
+          "w": "HOT",
+          "s": "hot"
+        },
+        {
+          "w": "BED",
+          "s": "bed_2"
+        },
+        {
+          "w": "BYE",
+          "s": "bye"
+        },
+        {
+          "w": "WAR",
+          "s": "war"
+        },
+        {
+          "w": "BET",
+          "s": "bet"
+        },
+        {
+          "w": "WOW",
+          "s": "wow"
+        },
+        {
+          "w": "RED",
+          "s": "red"
+        },
+        {
+          "w": "WIN",
+          "s": "win"
+        },
+        {
+          "w": "TOP",
+          "s": "top"
+        },
+        {
+          "w": "LIE",
+          "s": "lie"
+        },
+        {
+          "w": "LAW",
+          "s": "law"
+        },
+        {
+          "w": "MAD",
+          "s": "mad"
+        },
+        {
+          "w": "ACT",
+          "s": "act"
+        },
+        {
+          "w": "OOH",
+          "s": "ooh"
+        },
+        {
+          "w": "BAG",
+          "s": "bag"
+        },
+        {
+          "w": "BOX",
+          "s": "box"
+        },
+        {
+          "w": "KEY",
+          "s": "key"
+        },
+        {
+          "w": "FIX",
+          "s": "fix"
+        },
+        {
+          "w": "BAR",
+          "s": "bar"
+        },
+        {
+          "w": "FLY",
+          "s": "fly"
+        },
+        {
+          "w": "FAT",
+          "s": "fat"
+        },
+        {
+          "w": "ICE",
+          "s": "ice"
+        },
+        {
+          "w": "AGE",
+          "s": "age"
+        },
+        {
+          "w": "OWE",
+          "s": "owe"
+        },
+        {
+          "w": "BUS",
+          "s": "bus"
+        },
+        {
+          "w": "ART",
+          "s": "art"
+        },
+        {
+          "w": "SUN",
+          "s": "sun"
+        },
+        {
+          "w": "GAS",
+          "s": "gas"
+        },
+        {
+          "w": "POP",
+          "s": "pop_4"
+        },
+        {
+          "w": "CAT",
+          "s": "cat_2"
+        },
+        {
+          "w": "CRY",
+          "s": "cry"
+        },
+        {
+          "w": "ARM",
+          "s": "arm_2"
+        },
+        {
+          "w": "HAT",
+          "s": "hat_2"
+        },
+        {
+          "w": "SAD",
+          "s": "sad"
+        },
+        {
+          "w": "GAY",
+          "s": "gay"
+        },
+        {
+          "w": "TEA",
+          "s": "tea"
+        },
+        {
+          "w": "FIT",
+          "s": "fit"
+        },
+        {
+          "w": "CUP",
+          "s": "cup"
+        },
+        {
+          "w": "BEG",
+          "s": "beg"
+        },
+        {
+          "w": "DIG",
+          "s": "dig"
+        },
+        {
+          "w": "DUE",
+          "s": "due"
+        },
+        {
+          "w": "TIE",
+          "s": "tie_2"
+        },
+        {
+          "w": "DRY",
+          "s": "dry"
+        },
+        {
+          "w": "OIL",
+          "s": "oil_2"
+        },
+        {
+          "w": "WET",
+          "s": "wet"
+        },
+        {
+          "w": "PIG",
+          "s": "pig"
+        },
+        {
+          "w": "PEG",
+          "s": "peg_3"
+        },
+        {
+          "w": "FAN",
+          "s": "fan"
+        },
+        {
+          "w": "ADD",
+          "s": "add"
+        },
+        {
+          "w": "RAT",
+          "s": "rat"
+        },
+        {
+          "w": "EAR",
+          "s": "ear"
+        },
+        {
+          "w": "PIE",
+          "s": "pie"
+        },
+        {
+          "w": "ROW",
+          "s": "row"
+        },
+        {
+          "w": "EGG",
+          "s": "egg"
+        },
+        {
+          "w": "COW",
+          "s": "cow"
+        },
+        {
+          "w": "PEN",
+          "s": "pen"
+        },
+        {
+          "w": "ROB",
+          "s": "rob"
+        },
+        {
+          "w": "FOX",
+          "s": "fox"
+        },
+        {
+          "w": "BUG",
+          "s": "bug"
+        },
+        {
+          "w": "BAT",
+          "s": "bat_2"
+        },
+        {
+          "w": "BOW",
+          "s": "bow_4"
+        },
+        {
+          "w": "PET",
+          "s": "pet_2"
+        },
+        {
+          "w": "HUG",
+          "s": "hug"
+        },
+        {
+          "w": "HOP",
+          "s": "hop"
+        },
+        {
+          "w": "SHY",
+          "s": "shy"
+        },
+        {
+          "w": "GYM",
+          "s": "gym"
+        },
+        {
+          "w": "TOY",
+          "s": "toy_1"
+        },
+        {
+          "w": "MIX",
+          "s": "mix_1"
+        },
+        {
+          "w": "NUT",
+          "s": "nut"
+        },
+        {
+          "w": "NET",
+          "s": "net"
+        },
+        {
+          "w": "ZOO",
+          "s": "zoo"
+        },
+        {
+          "w": "GUM",
+          "s": "gum"
+        },
+        {
+          "w": "BRA",
+          "s": "bra_3"
+        },
+        {
+          "w": "BEE",
+          "s": "bee_2"
+        },
+        {
+          "w": "TAN",
+          "s": "tan"
+        },
+        {
+          "w": "JAR",
+          "s": "jar"
+        },
+        {
+          "w": "SKI",
+          "s": "ski"
+        },
+        {
+          "w": "DIP",
+          "s": "dip_1"
+        },
+        {
+          "w": "EGO",
+          "s": "ego"
+        },
+        {
+          "w": "YAY",
+          "s": "yay"
+        },
+        {
+          "w": "TOW",
+          "s": "tow_2"
+        },
+        {
+          "w": "OWL",
+          "s": "owl"
+        },
+        {
+          "w": "SEW",
+          "s": "sew"
+        },
+        {
+          "w": "AXE",
+          "s": "axe_1"
+        },
+        {
+          "w": "MOP",
+          "s": "mop_2"
+        },
+        {
+          "w": "DYE",
+          "s": "dye"
+        },
+        {
+          "w": "HEN",
+          "s": "hen"
+        },
+        {
+          "w": "BUN",
+          "s": "bun"
+        },
+        {
+          "w": "SOW",
+          "s": "sow"
+        },
+        {
+          "w": "HOE",
+          "s": "hoe"
+        },
+        {
+          "w": "BIB",
+          "s": "bib"
+        },
+        {
+          "w": "TTY",
+          "s": "tty"
+        },
+        {
+          "w": "PJS",
+          "s": "pjs"
+        },
+        {
+          "w": "FRY",
+          "s": "fry"
+        }
+      ]
+    },
+    {
+      "id": "asllex-4",
+      "name": "ASL-LEX · 4 letters",
+      "type": "asllex",
+      "source": "ASL-LEX 2.0 (Sevcikova Sehyr et al., 2021) — CC BY-NC 4.0",
+      "words": [
+        {
+          "w": "THAT",
+          "s": "that"
+        },
+        {
+          "w": "WHAT",
+          "s": "what_1"
+        },
+        {
+          "w": "YOUR",
+          "s": "your"
+        },
+        {
+          "w": "HAVE",
+          "s": "have"
+        },
+        {
+          "w": "KNOW",
+          "s": "know"
+        },
+        {
+          "w": "WITH",
+          "s": "with"
+        },
+        {
+          "w": "HERE",
+          "s": "here"
+        },
+        {
+          "w": "THEY",
+          "s": "they_1"
+        },
+        {
+          "w": "LIKE",
+          "s": "like"
+        },
+        {
+          "w": "COME",
+          "s": "come"
+        },
+        {
+          "w": "WELL",
+          "s": "well"
+        },
+        {
+          "w": "YEAH",
+          "s": "yeah"
+        },
+        {
+          "w": "WANT",
+          "s": "want_2"
+        },
+        {
+          "w": "GOOD",
+          "s": "good"
+        },
+        {
+          "w": "WILL",
+          "s": "will"
+        },
+        {
+          "w": "FROM",
+          "s": "from"
+        },
+        {
+          "w": "WHEN",
+          "s": "when"
+        },
+        {
+          "w": "BACK",
+          "s": "back"
+        },
+        {
+          "w": "TIME",
+          "s": "time"
+        },
+        {
+          "w": "TAKE",
+          "s": "take"
+        },
+        {
+          "w": "SOME",
+          "s": "some"
+        },
+        {
+          "w": "TELL",
+          "s": "tell"
+        },
+        {
+          "w": "THEN",
+          "s": "then"
+        },
+        {
+          "w": "DOWN",
+          "s": "down"
+        },
+        {
+          "w": "MAKE",
+          "s": "make"
+        },
+        {
+          "w": "OVER",
+          "s": "over"
+        },
+        {
+          "w": "MORE",
+          "s": "more"
+        },
+        {
+          "w": "NEED",
+          "s": "need"
+        },
+        {
+          "w": "MEAN",
+          "s": "mean_2"
+        },
+        {
+          "w": "VERY",
+          "s": "very"
+        },
+        {
+          "w": "GIVE",
+          "s": "give"
+        },
+        {
+          "w": "LOVE",
+          "s": "love"
+        },
+        {
+          "w": "SURE",
+          "s": "sure"
+        },
+        {
+          "w": "MUCH",
+          "s": "much"
+        },
+        {
+          "w": "HELP",
+          "s": "help"
+        },
+        {
+          "w": "EVEN",
+          "s": "even_1"
+        },
+        {
+          "w": "CALL",
+          "s": "call"
+        },
+        {
+          "w": "TALK",
+          "s": "talk"
+        },
+        {
+          "w": "WAIT",
+          "s": "wait"
+        },
+        {
+          "w": "FIND",
+          "s": "find"
+        },
+        {
+          "w": "WORK",
+          "s": "work"
+        },
+        {
+          "w": "HOME",
+          "s": "home"
+        },
+        {
+          "w": "THAN",
+          "s": "than"
+        },
+        {
+          "w": "AWAY",
+          "s": "away"
+        },
+        {
+          "w": "LAST",
+          "s": "last"
+        },
+        {
+          "w": "STOP",
+          "s": "stop"
+        },
+        {
+          "w": "KEEP",
+          "s": "keep"
+        },
+        {
+          "w": "MUST",
+          "s": "must"
+        },
+        {
+          "w": "LONG",
+          "s": "long"
+        },
+        {
+          "w": "NICE",
+          "s": "nice"
+        },
+        {
+          "w": "NAME",
+          "s": "name"
+        },
+        {
+          "w": "FEEL",
+          "s": "feel"
+        },
+        {
+          "w": "FINE",
+          "s": "fine_2"
+        },
+        {
+          "w": "GIRL",
+          "s": "girl"
+        },
+        {
+          "w": "HEAR",
+          "s": "hear_1"
+        },
+        {
+          "w": "STAY",
+          "s": "stay"
+        },
+        {
+          "w": "BABY",
+          "s": "baby"
+        },
+        {
+          "w": "SHOW",
+          "s": "show"
+        },
+        {
+          "w": "MIND",
+          "s": "mind"
+        },
+        {
+          "w": "LEFT",
+          "s": "left"
+        },
+        {
+          "w": "MISS",
+          "s": "miss"
+        },
+        {
+          "w": "KILL",
+          "s": "kill"
+        },
+        {
+          "w": "NEXT",
+          "s": "next"
+        },
+        {
+          "w": "ROOM",
+          "s": "room"
+        },
+        {
+          "w": "HOLD",
+          "s": "hold_2"
+        },
+        {
+          "w": "MOVE",
+          "s": "move"
+        },
+        {
+          "w": "SAME",
+          "s": "same_1"
+        },
+        {
+          "w": "BEST",
+          "s": "best"
+        },
+        {
+          "w": "HEAD",
+          "s": "head"
+        },
+        {
+          "w": "IDEA",
+          "s": "idea"
+        },
+        {
+          "w": "MANY",
+          "s": "many"
+        },
+        {
+          "w": "PLAY",
+          "s": "play"
+        },
+        {
+          "w": "MEET",
+          "s": "meet"
+        },
+        {
+          "w": "MOST",
+          "s": "most"
+        },
+        {
+          "w": "WIFE",
+          "s": "wife"
+        },
+        {
+          "w": "LIVE",
+          "s": "live_2"
+        },
+        {
+          "w": "ONCE",
+          "s": "once"
+        },
+        {
+          "w": "HOPE",
+          "s": "hope"
+        },
+        {
+          "w": "OPEN",
+          "s": "open"
+        },
+        {
+          "w": "HARD",
+          "s": "hard"
+        },
+        {
+          "w": "TURN",
+          "s": "turn"
+        },
+        {
+          "w": "GONE",
+          "s": "gone"
+        },
+        {
+          "w": "BOTH",
+          "s": "both"
+        },
+        {
+          "w": "DOOR",
+          "s": "door"
+        },
+        {
+          "w": "FACE",
+          "s": "face"
+        },
+        {
+          "w": "YEAR",
+          "s": "year"
+        },
+        {
+          "w": "LOST",
+          "s": "lost"
+        },
+        {
+          "w": "LATE",
+          "s": "late"
+        },
+        {
+          "w": "EASY",
+          "s": "easy"
+        },
+        {
+          "w": "SOON",
+          "s": "soon_1"
+        },
+        {
+          "w": "FOUR",
+          "s": "four"
+        },
+        {
+          "w": "TRUE",
+          "s": "true"
+        },
+        {
+          "w": "EACH",
+          "s": "each"
+        },
+        {
+          "w": "MINE",
+          "s": "mine"
+        },
+        {
+          "w": "HURT",
+          "s": "hurt"
+        },
+        {
+          "w": "READ",
+          "s": "read"
+        },
+        {
+          "w": "WEEK",
+          "s": "week"
+        },
+        {
+          "w": "WORD",
+          "s": "word"
+        },
+        {
+          "w": "WISH",
+          "s": "wish"
+        },
+        {
+          "w": "GAME",
+          "s": "game"
+        },
+        {
+          "w": "SHOT",
+          "s": "shot"
+        },
+        {
+          "w": "EYES",
+          "s": "eyes"
+        },
+        {
+          "w": "WALK",
+          "s": "walk"
+        },
+        {
+          "w": "FIRE",
+          "s": "fire"
+        },
+        {
+          "w": "HATE",
+          "s": "hate"
+        },
+        {
+          "w": "REST",
+          "s": "rest"
+        },
+        {
+          "w": "LINE",
+          "s": "line"
+        },
+        {
+          "w": "SIDE",
+          "s": "side"
+        },
+        {
+          "w": "HALF",
+          "s": "half"
+        },
+        {
+          "w": "PICK",
+          "s": "pick_2"
+        },
+        {
+          "w": "COOL",
+          "s": "cool_1"
+        },
+        {
+          "w": "BODY",
+          "s": "body"
+        },
+        {
+          "w": "HIGH",
+          "s": "high"
+        },
+        {
+          "w": "SEND",
+          "s": "send"
+        },
+        {
+          "w": "FREE",
+          "s": "free"
+        },
+        {
+          "w": "BOOK",
+          "s": "book"
+        },
+        {
+          "w": "CITY",
+          "s": "city_2"
+        },
+        {
+          "w": "FULL",
+          "s": "full"
+        }
+      ]
+    },
+    {
+      "id": "asllex-5",
+      "name": "ASL-LEX · 5 letters",
+      "type": "asllex",
+      "source": "ASL-LEX 2.0 (Sevcikova Sehyr et al., 2021) — CC BY-NC 4.0",
+      "words": [
+        {
+          "w": "THERE",
+          "s": "there"
+        },
+        {
+          "w": "RIGHT",
+          "s": "right_1"
+        },
+        {
+          "w": "ABOUT",
+          "s": "about_1"
+        },
+        {
+          "w": "THINK",
+          "s": "think"
+        },
+        {
+          "w": "WHERE",
+          "s": "where"
+        },
+        {
+          "w": "NEVER",
+          "s": "never"
+        },
+        {
+          "w": "SORRY",
+          "s": "sorry"
+        },
+        {
+          "w": "MAYBE",
+          "s": "maybe"
+        },
+        {
+          "w": "THESE",
+          "s": "these"
+        },
+        {
+          "w": "NIGHT",
+          "s": "night"
+        },
+        {
+          "w": "FIRST",
+          "s": "first"
+        },
+        {
+          "w": "GREAT",
+          "s": "great"
+        },
+        {
+          "w": "AGAIN",
+          "s": "again"
+        },
+        {
+          "w": "STILL",
+          "s": "still"
+        },
+        {
+          "w": "OTHER",
+          "s": "other"
+        },
+        {
+          "w": "AFTER",
+          "s": "after"
+        },
+        {
+          "w": "MONEY",
+          "s": "money_2"
+        },
+        {
+          "w": "PLACE",
+          "s": "place"
+        },
+        {
+          "w": "HELLO",
+          "s": "hello"
+        },
+        {
+          "w": "LEAVE",
+          "s": "leave"
+        },
+        {
+          "w": "THREE",
+          "s": "three"
+        },
+        {
+          "w": "WRONG",
+          "s": "wrong_1"
+        },
+        {
+          "w": "HOUSE",
+          "s": "house"
+        },
+        {
+          "w": "WHICH",
+          "s": "which"
+        },
+        {
+          "w": "WORLD",
+          "s": "world"
+        },
+        {
+          "w": "GUESS",
+          "s": "guess_1"
+        },
+        {
+          "w": "WOMAN",
+          "s": "woman_2"
+        },
+        {
+          "w": "TODAY",
+          "s": "today"
+        },
+        {
+          "w": "READY",
+          "s": "ready"
+        },
+        {
+          "w": "WHOLE",
+          "s": "whole"
+        },
+        {
+          "w": "WHILE",
+          "s": "while"
+        },
+        {
+          "w": "START",
+          "s": "start"
+        },
+        {
+          "w": "HAPPY",
+          "s": "happy"
+        },
+        {
+          "w": "WATCH",
+          "s": "watch"
+        },
+        {
+          "w": "BRING",
+          "s": "bring"
+        },
+        {
+          "w": "SINCE",
+          "s": "since"
+        },
+        {
+          "w": "CAUSE",
+          "s": "cause"
+        },
+        {
+          "w": "ALONE",
+          "s": "alone"
+        },
+        {
+          "w": "UNTIL",
+          "s": "until"
+        },
+        {
+          "w": "HONEY",
+          "s": "honey_1"
+        },
+        {
+          "w": "LATER",
+          "s": "later"
+        },
+        {
+          "w": "WORRY",
+          "s": "worry"
+        },
+        {
+          "w": "CHECK",
+          "s": "check"
+        },
+        {
+          "w": "CRAZY",
+          "s": "crazy"
+        },
+        {
+          "w": "UNDER",
+          "s": "under"
+        },
+        {
+          "w": "DRINK",
+          "s": "drink"
+        },
+        {
+          "w": "HEART",
+          "s": "heart"
+        },
+        {
+          "w": "YOUNG",
+          "s": "young"
+        },
+        {
+          "w": "POINT",
+          "s": "point"
+        },
+        {
+          "w": "HANDS",
+          "s": "hands"
+        },
+        {
+          "w": "PARTY",
+          "s": "party_1"
+        },
+        {
+          "w": "SLEEP",
+          "s": "sleep"
+        },
+        {
+          "w": "STAND",
+          "s": "stand_1"
+        },
+        {
+          "w": "WATER",
+          "s": "water"
+        },
+        {
+          "w": "BREAK",
+          "s": "break"
+        },
+        {
+          "w": "STORY",
+          "s": "story_2"
+        },
+        {
+          "w": "FUNNY",
+          "s": "funny"
+        },
+        {
+          "w": "DEATH",
+          "s": "death"
+        },
+        {
+          "w": "FIGHT",
+          "s": "fight"
+        },
+        {
+          "w": "TRUTH",
+          "s": "truth"
+        },
+        {
+          "w": "BLOOD",
+          "s": "blood"
+        },
+        {
+          "w": "FRONT",
+          "s": "front"
+        },
+        {
+          "w": "HURRY",
+          "s": "hurry"
+        },
+        {
+          "w": "CLEAR",
+          "s": "clear"
+        },
+        {
+          "w": "WHITE",
+          "s": "white"
+        },
+        {
+          "w": "BLACK",
+          "s": "black"
+        },
+        {
+          "w": "LIGHT",
+          "s": "light_2"
+        },
+        {
+          "w": "SHOOT",
+          "s": "shoot_2"
+        },
+        {
+          "w": "CHILD",
+          "s": "child"
+        },
+        {
+          "w": "ORDER",
+          "s": "order_1"
+        },
+        {
+          "w": "DRIVE",
+          "s": "drive"
+        },
+        {
+          "w": "MUSIC",
+          "s": "music"
+        },
+        {
+          "w": "POWER",
+          "s": "power"
+        },
+        {
+          "w": "DANCE",
+          "s": "dance"
+        },
+        {
+          "w": "TOUCH",
+          "s": "touch"
+        },
+        {
+          "w": "SWEET",
+          "s": "sweet"
+        },
+        {
+          "w": "LUCKY",
+          "s": "lucky"
+        },
+        {
+          "w": "SOUND",
+          "s": "sound"
+        },
+        {
+          "w": "CATCH",
+          "s": "catch_3"
+        },
+        {
+          "w": "DREAM",
+          "s": "dream"
+        },
+        {
+          "w": "THROW",
+          "s": "throw_2"
+        },
+        {
+          "w": "WRITE",
+          "s": "write"
+        },
+        {
+          "w": "SMALL",
+          "s": "small"
+        },
+        {
+          "w": "UNCLE",
+          "s": "uncle"
+        },
+        {
+          "w": "MOVIE",
+          "s": "movie"
+        },
+        {
+          "w": "CLEAN",
+          "s": "clean"
+        },
+        {
+          "w": "LEARN",
+          "s": "learn"
+        },
+        {
+          "w": "CLASS",
+          "s": "class"
+        },
+        {
+          "w": "QUIET",
+          "s": "quiet"
+        },
+        {
+          "w": "TIRED",
+          "s": "tired"
+        },
+        {
+          "w": "EARLY",
+          "s": "early"
+        },
+        {
+          "w": "STATE",
+          "s": "state"
+        },
+        {
+          "w": "TABLE",
+          "s": "table"
+        },
+        {
+          "w": "MAJOR",
+          "s": "major"
+        },
+        {
+          "w": "SEVEN",
+          "s": "seven"
+        },
+        {
+          "w": "MOUTH",
+          "s": "mouth"
+        },
+        {
+          "w": "MARRY",
+          "s": "marry"
+        },
+        {
+          "w": "FAULT",
+          "s": "fault"
+        },
+        {
+          "w": "LUNCH",
+          "s": "lunch_1"
+        },
+        {
+          "w": "PAPER",
+          "s": "paper"
+        },
+        {
+          "w": "HOTEL",
+          "s": "hotel"
+        },
+        {
+          "w": "WEIRD",
+          "s": "weird"
+        },
+        {
+          "w": "FLOOR",
+          "s": "floor"
+        },
+        {
+          "w": "EARTH",
+          "s": "earth"
+        },
+        {
+          "w": "EIGHT",
+          "s": "eight"
+        },
+        {
+          "w": "WORSE",
+          "s": "worse"
+        },
+        {
+          "w": "RELAX",
+          "s": "relax_2"
+        },
+        {
+          "w": "HONOR",
+          "s": "honor"
+        },
+        {
+          "w": "SMART",
+          "s": "smart"
+        },
+        {
+          "w": "MONTH",
+          "s": "month"
+        },
+        {
+          "w": "TRAIN",
+          "s": "train"
+        },
+        {
+          "w": "SPEND",
+          "s": "spend"
+        },
+        {
+          "w": "HORSE",
+          "s": "horse"
+        },
+        {
+          "w": "TOUGH",
+          "s": "tough"
+        },
+        {
+          "w": "COUNT",
+          "s": "count"
+        },
+        {
+          "w": "DRESS",
+          "s": "dress"
+        },
+        {
+          "w": "VOICE",
+          "s": "voice"
+        },
+        {
+          "w": "SMELL",
+          "s": "smell"
+        },
+        {
+          "w": "ENJOY",
+          "s": "enjoy"
+        }
+      ]
+    },
+    {
+      "id": "asllex-6plus",
+      "name": "ASL-LEX · 6+ letters",
+      "type": "asllex",
+      "source": "ASL-LEX 2.0 (Sevcikova Sehyr et al., 2021) — CC BY-NC 4.0",
+      "words": [
+        {
+          "w": "REALLY",
+          "s": "really"
+        },
+        {
+          "w": "SOMETHING",
+          "s": "something"
+        },
+        {
+          "w": "PEOPLE",
+          "s": "people"
+        },
+        {
+          "w": "PLEASE",
+          "s": "please"
+        },
+        {
+          "w": "BECAUSE",
+          "s": "because"
+        },
+        {
+          "w": "SHOULD",
+          "s": "should"
+        },
+        {
+          "w": "NOTHING",
+          "s": "nothing"
+        },
+        {
+          "w": "BETTER",
+          "s": "better"
+        },
+        {
+          "w": "BEFORE",
+          "s": "before"
+        },
+        {
+          "w": "THINGS",
+          "s": "things"
+        },
+        {
+          "w": "EVERYTHING",
+          "s": "everything"
+        },
+        {
+          "w": "ALWAYS",
+          "s": "always"
+        },
+        {
+          "w": "BELIEVE",
+          "s": "believe_2"
+        },
+        {
+          "w": "FATHER",
+          "s": "father"
+        },
+        {
+          "w": "LISTEN",
+          "s": "listen"
+        },
+        {
+          "w": "REMEMBER",
+          "s": "remember"
+        },
+        {
+          "w": "ENOUGH",
+          "s": "enough"
+        },
+        {
+          "w": "UNDERSTAND",
+          "s": "understand"
+        },
+        {
+          "w": "MOTHER",
+          "s": "mother"
+        },
+        {
+          "w": "MORNING",
+          "s": "morning"
+        },
+        {
+          "w": "YOURSELF",
+          "s": "yourself"
+        },
+        {
+          "w": "FRIEND",
+          "s": "friend"
+        },
+        {
+          "w": "PRETTY",
+          "s": "pretty"
+        },
+        {
+          "w": "TOGETHER",
+          "s": "together"
+        },
+        {
+          "w": "MINUTE",
+          "s": "minute"
+        },
+        {
+          "w": "EXCUSE",
+          "s": "excuse"
+        },
+        {
+          "w": "FAMILY",
+          "s": "family"
+        },
+        {
+          "w": "WITHOUT",
+          "s": "without"
+        },
+        {
+          "w": "MYSELF",
+          "s": "myself"
+        },
+        {
+          "w": "TOMORROW",
+          "s": "tomorrow"
+        },
+        {
+          "w": "SCHOOL",
+          "s": "school"
+        },
+        {
+          "w": "PROBLEM",
+          "s": "problem_2"
+        },
+        {
+          "w": "BUSINESS",
+          "s": "business"
+        },
+        {
+          "w": "BROTHER",
+          "s": "brother"
+        },
+        {
+          "w": "DOCTOR",
+          "s": "doctor_2"
+        },
+        {
+          "w": "ANYONE",
+          "s": "anyone"
+        },
+        {
+          "w": "HAPPEN",
+          "s": "happen"
+        },
+        {
+          "w": "WHATEVER",
+          "s": "whatever"
+        },
+        {
+          "w": "CHANCE",
+          "s": "chance"
+        },
+        {
+          "w": "CHANGE",
+          "s": "change"
+        },
+        {
+          "w": "TROUBLE",
+          "s": "trouble"
+        },
+        {
+          "w": "PERSON",
+          "s": "person"
+        },
+        {
+          "w": "INSIDE",
+          "s": "inside"
+        },
+        {
+          "w": "DIFFERENT",
+          "s": "different"
+        },
+        {
+          "w": "IMPORTANT",
+          "s": "important"
+        },
+        {
+          "w": "OFFICE",
+          "s": "office"
+        },
+        {
+          "w": "DINNER",
+          "s": "dinner_1"
+        },
+        {
+          "w": "AGAINST",
+          "s": "against"
+        },
+        {
+          "w": "HUSBAND",
+          "s": "husband"
+        },
+        {
+          "w": "REASON",
+          "s": "reason"
+        },
+        {
+          "w": "BEHIND",
+          "s": "behind"
+        },
+        {
+          "w": "STUPID",
+          "s": "stupid_2"
+        },
+        {
+          "w": "EITHER",
+          "s": "either"
+        },
+        {
+          "w": "SISTER",
+          "s": "sister"
+        },
+        {
+          "w": "WELCOME",
+          "s": "welcome_1"
+        },
+        {
+          "w": "SOMETIMES",
+          "s": "sometimes"
+        },
+        {
+          "w": "ANSWER",
+          "s": "answer"
+        },
+        {
+          "w": "CHILDREN",
+          "s": "children"
+        },
+        {
+          "w": "BETWEEN",
+          "s": "between"
+        },
+        {
+          "w": "DAUGHTER",
+          "s": "daughter"
+        },
+        {
+          "w": "OUTSIDE",
+          "s": "outside"
+        },
+        {
+          "w": "COUNTRY",
+          "s": "country"
+        },
+        {
+          "w": "PERFECT",
+          "s": "perfect"
+        },
+        {
+          "w": "PROMISE",
+          "s": "promise"
+        },
+        {
+          "w": "SPECIAL",
+          "s": "special_2"
+        },
+        {
+          "w": "SERIOUS",
+          "s": "serious"
+        },
+        {
+          "w": "STREET",
+          "s": "street"
+        },
+        {
+          "w": "COFFEE",
+          "s": "coffee"
+        },
+        {
+          "w": "PARENTS",
+          "s": "parents"
+        },
+        {
+          "w": "PRESIDENT",
+          "s": "president"
+        },
+        {
+          "w": "PICTURE",
+          "s": "picture"
+        },
+        {
+          "w": "SCARED",
+          "s": "scared"
+        },
+        {
+          "w": "MEETING",
+          "s": "meeting"
+        },
+        {
+          "w": "FIGURE",
+          "s": "figure"
+        },
+        {
+          "w": "CANNOT",
+          "s": "cannot"
+        },
+        {
+          "w": "HOSPITAL",
+          "s": "hospital"
+        },
+        {
+          "w": "FOLLOW",
+          "s": "follow_1"
+        },
+        {
+          "w": "STRAIGHT",
+          "s": "straight"
+        },
+        {
+          "w": "CHRISTMAS",
+          "s": "christmas_1"
+        },
+        {
+          "w": "EVENING",
+          "s": "evening"
+        },
+        {
+          "w": "FINALLY",
+          "s": "finally"
+        },
+        {
+          "w": "WONDER",
+          "s": "wonder"
+        },
+        {
+          "w": "BECOME",
+          "s": "become"
+        },
+        {
+          "w": "POSSIBLE",
+          "s": "possible"
+        },
+        {
+          "w": "SECRET",
+          "s": "secret"
+        },
+        {
+          "w": "CAREFUL",
+          "s": "careful"
+        },
+        {
+          "w": "EXPECT",
+          "s": "expect"
+        },
+        {
+          "w": "FUTURE",
+          "s": "future"
+        },
+        {
+          "w": "WEDDING",
+          "s": "wedding"
+        },
+        {
+          "w": "CLOTHES",
+          "s": "clothes"
+        },
+        {
+          "w": "BUILDING",
+          "s": "building"
+        },
+        {
+          "w": "FINISH",
+          "s": "finish"
+        },
+        {
+          "w": "ATTENTION",
+          "s": "attention"
+        },
+        {
+          "w": "BIRTHDAY",
+          "s": "birthday"
+        },
+        {
+          "w": "YESTERDAY",
+          "s": "yesterday"
+        },
+        {
+          "w": "CAUGHT",
+          "s": "caught"
+        },
+        {
+          "w": "SYSTEM",
+          "s": "system"
+        },
+        {
+          "w": "AFTERNOON",
+          "s": "afternoon"
+        },
+        {
+          "w": "CHARGE",
+          "s": "charge"
+        },
+        {
+          "w": "MIDDLE",
+          "s": "middle"
+        },
+        {
+          "w": "SURPRISE",
+          "s": "surprise"
+        },
+        {
+          "w": "FOREVER",
+          "s": "forever_2"
+        },
+        {
+          "w": "MISSING",
+          "s": "missing"
+        },
+        {
+          "w": "STRONG",
+          "s": "strong"
+        },
+        {
+          "w": "STRANGE",
+          "s": "strange"
+        },
+        {
+          "w": "WINDOW",
+          "s": "window"
+        },
+        {
+          "w": "INTERESTED",
+          "s": "interested"
+        },
+        {
+          "w": "RECORD",
+          "s": "record"
+        },
+        {
+          "w": "COLLEGE",
+          "s": "college"
+        },
+        {
+          "w": "EVIDENCE",
+          "s": "evidence"
+        },
+        {
+          "w": "HISTORY",
+          "s": "history"
+        },
+        {
+          "w": "LETTER",
+          "s": "letter"
+        },
+        {
+          "w": "SITUATION",
+          "s": "situation"
+        },
+        {
+          "w": "AMAZING",
+          "s": "amazing"
+        },
+        {
+          "w": "ACCIDENT",
+          "s": "accident"
+        },
+        {
+          "w": "IMAGINE",
+          "s": "imagine_2"
+        },
+        {
+          "w": "LAWYER",
+          "s": "lawyer"
+        },
+        {
+          "w": "INSTEAD",
+          "s": "instead"
+        },
+        {
+          "w": "ALRIGHT",
+          "s": "alright"
+        },
+        {
+          "w": "HUNDRED",
+          "s": "hundred"
+        }
       ]
     }
   ]
