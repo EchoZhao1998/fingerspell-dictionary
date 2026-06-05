@@ -46,7 +46,7 @@
     line-height: 1.5;
   }
   header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
-  h1 { font-size: 28px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
+  h1 { font-size: 28px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; color: var(--accent); }
   .subtitle { color: var(--muted); font-size: 15px; margin: 0; }
   .score-chip {
     background: var(--soft); padding: 8px 14px; border-radius: 999px;
@@ -54,11 +54,23 @@
   }
   .divider { height: 1px; background: var(--line); margin: 24px 0; }
 
+  /* ── Filter row (Difficulty / Category / Word counts) ── */
+  .filters {
+    display: flex; gap: 16px; flex-wrap: wrap; margin: 20px 0 4px;
+  }
+  .filter-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 150px; }
+  .filter-group > span { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .filter-group select {
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 12px; font-size: 14px; color: var(--ink); cursor: pointer;
+    font-family: inherit; width: 100%;
+  }
+  .filter-group select:focus { outline: none; border-color: var(--accent); }
+
   .card {
     background: var(--card); border: 1px solid var(--line); border-radius: 12px;
     padding: 24px; margin-bottom: 16px;
   }
-  .word-label { font-size: 18px; font-weight: 600; margin: 0 0 4px; }
   .word-sub { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
 
   .player {
@@ -86,11 +98,6 @@
     flex: 1; height: 3px; background: rgba(255,255,255,.25); border-radius: 2px; overflow: hidden;
   }
   .progress-bar { height: 100%; background: #fff; width: 0%; transition: width .1s linear; }
-  .player-controls button {
-    background: rgba(255,255,255,.15); border: none; color: #fff; padding: 6px 10px;
-    border-radius: 6px; cursor: pointer; font-size: 13px;
-  }
-  .player-controls button:hover { background: rgba(255,255,255,.28); }
 
   .controls-row {
     display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
@@ -110,14 +117,6 @@
     white-space: nowrap;
   }
   .abc-btn:hover { background: var(--soft); }
-  .speed-control { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
-  .speed-control input[type=range] { width: 120px; }
-  .speed-control.locked { opacity: .5; }
-  .tier-select {
-    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
-    padding: 8px 10px; font-size: 13px; color: var(--ink); cursor: pointer;
-  }
-  .tier-select:disabled { opacity: .5; cursor: not-allowed; }
 
   label.field-label { display: block; font-weight: 600; font-size: 15px; margin: 20px 0 8px; }
   input.answer {
@@ -183,21 +182,17 @@
   .howto .credit { margin-top: 14px; font-size: 12px; color: var(--muted); }
   .howto .credit a { color: var(--muted); }
 
-  /* ── Mode toggle (Practice / Challenge) ─────────────── */
-  .mode-toggle {
-    display: flex; gap: 4px; padding: 4px;
-    background: var(--soft); border-radius: 10px; margin: 24px 0 4px;
+  /* ── Reference buttons (Alphabet / Best practice) ───── */
+  .reference-row {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px;
   }
-  .mode-btn {
-    flex: 1; padding: 12px 14px; min-height: 44px; border: none; background: transparent;
-    color: var(--muted); font-size: 14px; font-weight: 500; cursor: pointer;
-    border-radius: 8px; transition: background .15s, color .15s;
-    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-    font-family: inherit;
+  .reference-btn {
+    flex: 1; min-width: 200px; padding: 14px 16px; border-radius: 10px;
+    border: none; background: var(--accent); color: #fff;
+    font-size: 15px; font-weight: 500; cursor: pointer; font-family: inherit;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   }
-  .mode-btn:hover { color: var(--ink); }
-  .mode-btn.active { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.06); }
-  .mode-desc { color: var(--muted); font-size: 13px; margin: 0 4px 8px; }
+  .reference-btn:hover { background: var(--accent-hover); }
 
   /* ── Tabs ──────────────────────────────────────────── */
   .tabs {
@@ -264,7 +259,7 @@
   .stat-card.stat-correct .stat-value  { color: var(--ok); }
   .stat-card.stat-accuracy .stat-value { color: var(--accent); }
 
-  /* ── History / submissions tables ──────────────────── */
+  /* ── History table ─────────────────────────────────── */
   .history-card {
     background: var(--card); border: 1px solid var(--line); border-radius: 12px;
     padding: 24px; margin-bottom: 16px;
@@ -301,19 +296,21 @@
   .history-table tr.row-correct td:first-child  { border-left-color: var(--ok); }
   .history-table tr.row-gaveup  td:first-child  { border-left-color: var(--no); }
   .history-word { font-weight: 500; }
+  .history-word-btn {
+    font: inherit; font-weight: 600; color: var(--accent); background: none;
+    border: none; padding: 0; cursor: pointer; text-align: left;
+    border-bottom: 1px dashed var(--accent-soft);
+  }
+  .history-word-btn:hover { color: var(--accent-hover); border-bottom-color: var(--accent); }
+  .dict-empty { color: var(--muted); font-style: italic; margin: 0; }
   .history-guess { color: var(--muted); font-family: ui-monospace, "SF Mono", Menlo, monospace; }
   .history-outcome { font-size: 13px; }
   .history-outcome.ok { color: var(--ok); font-weight: 500; }
   .history-outcome.no { color: var(--no-fg); font-weight: 500; }
   .history-pack { color: var(--muted); font-size: 12px; }
   .history-time { color: var(--muted); font-size: 12px; white-space: nowrap; }
-  /* Submission accuracy chip */
-  .sub-acc { font-weight: 600; }
-  .sub-acc.hi { color: var(--ok); }
-  .sub-acc.mid { color: var(--accent); }
-  .sub-acc.lo { color: var(--no-fg); }
 
-  /* ── Alphabet modal ────────────────────────────────── */
+  /* ── Modals (Alphabet + Best practice) ─────────────── */
   .modal-overlay {
     position: fixed; inset: 0; background: rgba(13,13,13,.6);
     display: none; align-items: center; justify-content: center; padding: 24px; z-index: 50;
@@ -333,6 +330,18 @@
   .modal-close:hover { background: var(--line); }
   .modal img { width: 100%; height: auto; border-radius: 8px; display: block; }
   .modal-note { color: var(--muted); font-size: 13px; margin: 12px 0 0; }
+
+  /* DOs / DON'Ts columns */
+  .dd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 520px) { .dd-grid { grid-template-columns: 1fr; } }
+  .dd-col { border-radius: 10px; padding: 14px 16px; }
+  .dd-col.do  { background: var(--ok-bg); border: 1px solid var(--ok-border); }
+  .dd-col.dont { background: var(--no-bg); border: 1px solid var(--no-border); }
+  .dd-col h4 { margin: 0 0 10px; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+  .dd-col.do h4 { color: var(--ok); }
+  .dd-col.dont h4 { color: var(--no-fg); }
+  .dd-col ul { margin: 0; padding-left: 18px; }
+  .dd-col li { margin: 7px 0; font-size: 13.5px; color: var(--ink); line-height: 1.45; }
 </style>
 </head>
 <body>
@@ -344,13 +353,6 @@
   </div>
   <div class="score-chip">Score: <span id="score">0</span>/<span id="total">0</span></div>
 </header>
-
-<!-- ── Mode toggle ──────────────────────────────────── -->
-<div class="mode-toggle" role="tablist" aria-label="Practice mode">
-  <button class="mode-btn active" id="mode-practice" data-mode="practice">🧭 Practice</button>
-  <button class="mode-btn" id="mode-challenge" data-mode="challenge">⏱ Challenge</button>
-</div>
-<p class="mode-desc" id="mode-desc">Untimed. Explore freely, look words up, and press Enter to move on.</p>
 
 <nav class="tabs" role="tablist">
   <button class="tab-btn active" data-tab="practice" role="tab" aria-selected="true">
@@ -365,9 +367,37 @@
 <!-- ── Play Tab ─────────────────────────────────────── -->
 <section id="tab-practice" class="tab-panel active">
 
+<!-- Three prototype filters: Difficulty (speed), Category (length), Word counts (round size) -->
+<div class="filters">
+  <label class="filter-group">
+    <span>Difficulty</span>
+    <select id="difficulty" aria-label="Difficulty (animation speed)">
+      <option value="0.5">Easy · 0.5×</option>
+      <option value="1" selected>Medium · 1×</option>
+      <option value="1.5">Hard · 1.5×</option>
+      <option value="2">Advanced · 2×</option>
+      <option value="3">Expert · 3×</option>
+    </select>
+  </label>
+  <label class="filter-group">
+    <span>Category</span>
+    <select id="pack" aria-label="Word category by length">
+      <!-- populated dynamically from words.json -->
+    </select>
+  </label>
+  <label class="filter-group">
+    <span>Word counts</span>
+    <select id="word-counts" aria-label="Words per round">
+      <option value="5">5 words</option>
+      <option value="10" selected>10 words</option>
+      <option value="15">15 words</option>
+      <option value="20">20 words</option>
+    </select>
+  </label>
+</div>
+
 <div class="card">
-  <p class="round-progress" id="round-progress">Word 1</p>
-  <p class="word-label">Word #<span id="word-num">1</span></p>
+  <p class="round-progress" id="round-progress">Word 1 of 10</p>
   <p class="word-sub">Watch carefully and spell what you see</p>
 
   <div class="player" id="player">
@@ -381,19 +411,6 @@
   <div class="controls-row">
     <button class="replay-btn" id="replay-btn">↻ Replay Animation</button>
     <button class="abc-btn" id="abc-btn" title="Review the ASL alphabet">🔤 Alphabet</button>
-    <div class="speed-control" id="speed-control">
-      <span>Speed</span>
-      <input type="range" id="speed" min="0.5" max="2" step="0.25" value="1">
-      <span id="speed-label">1.0x</span>
-    </div>
-    <select class="tier-select" id="pack" aria-label="Word pack">
-      <!-- populated dynamically from words.json -->
-    </select>
-    <select class="tier-select" id="round-duration" aria-label="Round duration">
-      <option value="180">3 min round</option>
-      <option value="300">5 min round</option>
-      <option value="480" selected>8 min round</option>
-    </select>
   </div>
 
   <label class="field-label" for="answer">Your Answer</label>
@@ -404,19 +421,22 @@
   <div id="feedback" class="feedback"></div>
 
   <div class="action-row" id="action-row" style="display:none">
-    <button class="giveup" id="giveup-btn">Give up & reveal</button>
-    <button id="dict-btn">Look up in dictionary</button>
-    <a class="asl-sign" id="asl-sign-link" target="_blank" rel="noopener" style="display:none">See the real ASL sign ↗</a>
-    <button class="next" id="next-btn">Next Word →</button>
+    <button class="giveup" id="giveup-btn">Give up &amp; reveal</button>
+    <a class="asl-sign" id="asl-sign-link" target="_blank" rel="noopener" style="display:none">How to sign in ASL ↗</a>
+    <button class="next" id="next-btn">Next word →</button>
   </div>
-
-  <div class="dict-panel" id="dict-panel"></div>
 
   <div class="round-banner" id="round-banner">
     <p class="round-banner-title" id="round-banner-title">Round complete</p>
     <p class="round-banner-sub" id="round-banner-sub">7 of 10 correct (70%)</p>
     <button id="new-round-btn">Start new round →</button>
   </div>
+</div>
+
+<!-- Reference buttons (match prototype bottom buttons) -->
+<div class="reference-row">
+  <button class="reference-btn" id="ref-alphabet-btn">🔤 ASL Alphabet &amp; Numbers</button>
+  <button class="reference-btn" id="ref-bestpractice-btn">🤝 Best practice with Deaf/deaf/HOH</button>
 </div>
 
 </section>
@@ -439,16 +459,17 @@
   </div>
 </div>
 
-<!-- Per-session submissions (Challenge rounds) -->
+<!-- Word lookup (dictionary lives here now, driven by clicking history words) -->
 <div class="history-card">
   <div class="history-head">
     <div>
-      <p class="history-title">Challenge submissions</p>
-      <p class="history-sub">Each completed Challenge round, newest first</p>
+      <p class="history-title">Word lookup</p>
+      <p class="history-sub">Tap any word in your history below to see its meaning, pronunciation, and examples.</p>
     </div>
-    <button class="history-clear" id="submissions-clear">Clear submissions</button>
   </div>
-  <div id="submissions-body"><!-- populated dynamically --></div>
+  <div class="dict-panel open" id="dict-panel">
+    <p class="dict-def dict-empty">No word selected yet — tap a word in your Response History to look it up.</p>
+  </div>
 </div>
 
 <!-- Full attempt history -->
@@ -456,7 +477,7 @@
   <div class="history-head">
     <div>
       <p class="history-title">Response History</p>
-      <p class="history-sub">Every word you have attempted</p>
+      <p class="history-sub">Every word you have attempted — tap a word to look it up above</p>
     </div>
     <button class="history-clear" id="history-clear">Clear history</button>
   </div>
@@ -468,13 +489,14 @@
 <div class="howto">
   <h3>How to use</h3>
   <ol>
-    <li><strong>Practice</strong> is untimed — explore any pack, look words up, press <strong>Enter</strong> to advance once an answer is in.</li>
-    <li><strong>Challenge</strong> is timed — pick a pack + speed, then race the clock. Each round is saved as a submission.</li>
-    <li>Watch the animation. Use Replay, change Speed, or open the <strong>Alphabet</strong> if you forget a letter.</li>
-    <li>Type what you saw and press Enter (or click Check Answer).</li>
-    <li>For ASL-LEX words, tap <strong>See the real ASL sign</strong> to watch the actual sign.</li>
+    <li>Pick a <strong>Difficulty</strong> (animation speed), a <strong>Category</strong> (word length), and how many <strong>words</strong> you want this round.</li>
+    <li>Watch the animation. Use <strong>Replay</strong> or open the <strong>Alphabet</strong> if you forget a letter.</li>
+    <li>Type what you saw and press <strong>Enter</strong> (or click Check Answer).</li>
+    <li>Stuck? <strong>Give up &amp; reveal</strong>, or tap <strong>How to sign in ASL</strong> to watch the real sign.</li>
+    <li>Finish the round to log your accuracy, then start a new one.</li>
+    <li>Want a word's meaning? Open the <strong>Results</strong> tab and tap any word in your history to look it up.</li>
   </ol>
-  <p class="credit">Real-sign word packs &amp; sign links from
+  <p class="credit">All word packs &amp; real-sign links from
     <a href="https://asl-lex.org" target="_blank" rel="noopener">ASL-LEX 2.0</a>
     (Sevcikova Sehyr, Caselli, Cohen-Goldberg &amp; Emmorey, 2021), used under CC BY-NC 4.0.</p>
 </div>
@@ -483,11 +505,46 @@
 <div class="modal-overlay" id="abc-modal" role="dialog" aria-modal="true" aria-label="ASL alphabet">
   <div class="modal">
     <div class="modal-head">
-      <p class="modal-title">ASL fingerspelling alphabet</p>
+      <p class="modal-title">ASL fingerspelling alphabet &amp; numbers</p>
       <button class="modal-close" id="abc-close" aria-label="Close">×</button>
     </div>
     <img src="assets/Asl_alphabet_gallaudet.svg.png" alt="The ASL manual alphabet, A through Z">
     <p class="modal-note">Forgot a handshape? Review it here, then close and keep practicing. (Press Esc to close.)</p>
+  </div>
+</div>
+
+<!-- ── Best-practice modal (DOs / DON'Ts) ───────────── -->
+<div class="modal-overlay" id="bp-modal" role="dialog" aria-modal="true" aria-label="Best practice when chatting with Deaf people">
+  <div class="modal">
+    <div class="modal-head">
+      <p class="modal-title">Chatting with Deaf / deaf / HOH people</p>
+      <button class="modal-close" id="bp-close" aria-label="Close">×</button>
+    </div>
+    <div class="dd-grid">
+      <div class="dd-col do">
+        <h4>✓ Do</h4>
+        <ul>
+          <li>Get my attention first — a wave, a light tap on the shoulder, or a flick of the lights.</li>
+          <li>Face me directly with your mouth and expression visible, light on your face.</li>
+          <li>Speak naturally and clearly; if I miss it, rephrase instead of just repeating.</li>
+          <li>Keep eye contact with me, not with my interpreter or companion.</li>
+          <li>Use text, writing, or gestures whenever speech doesn't land — whatever works.</li>
+          <li>Be patient, let me finish, and ask how I prefer to communicate.</li>
+        </ul>
+      </div>
+      <div class="dd-col dont">
+        <h4>✗ Don't</h4>
+        <ul>
+          <li>Don't cover your mouth, chew, or turn away while you're talking.</li>
+          <li>Don't shout or exaggerate your lips — it distorts lipreading.</li>
+          <li>Don't say "never mind" or "I'll tell you later" — it's dismissive.</li>
+          <li>Don't talk to my interpreter instead of me ("tell her…").</li>
+          <li>Don't assume every deaf person lipreads or uses the same language.</li>
+          <li>Don't start talking before you have my visual attention.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="modal-note">Small habits, big difference. (Press Esc to close.)</p>
   </div>
 </div>
 
@@ -498,13 +555,13 @@ const ASSET = (l) => `assets/letters/Sign_language_${l}.svg`;
 // State
 let packs = [];                 // [{id, name, type, words, ...}]
 let packsById = {};             // {id -> pack}
-let currentPackId = "len-4";
+let currentPackId = "short";
 let currentWord = "";
 let currentSign = null;         // ASL-LEX gloss for the current word (deep-link), or null
-let currentIndex = 0;
+let currentIndex = 0;           // lifetime word counter (drives history numbering)
 let score = 0;
 let total = 0;
-let speed = 1;
+let speed = 1;                  // driven by the Difficulty selector
 let isRevealed = false;
 let animationTimer = null;
 let progressTimer = null;
@@ -513,38 +570,17 @@ let animDuration = 0;
 let currentReplays = 0;         // replays consumed for the current word
 let lastGuess = "";             // last input attempted on current word
 
-// Mode: "practice" (untimed) or "challenge" (timed, scored as a submission)
-let mode = "practice";
-const MODE_KEY = "fsd_mode_v1";
-
-// Round state — time-based (challenge only)
-let roundDurationSec = 480;     // 0 = unlimited
-let roundStartTs = 0;           // ms timestamp when current round started
-let roundEndTimer = null;
-let roundTickTimer = null;
+// Round state — word-count based
+let roundSize = 10;             // words per round
 let roundIndex = 0;             // 1-based word number within the round
 let roundCorrect = 0;           // correct answers in current round
 let roundFinalized = 0;         // total finalized words in current round
 let roundComplete = false;
-let roundPackId = "";           // pack locked for the current challenge round
-let roundSpeed = 1;             // speed locked for the current challenge round
+let roundQueue = [];            // shuffled, no-replacement queue for the current pack
 
 // History (persisted)
 const STORAGE_KEY = "fsd_attempts_v1";
 let attempts = [];              // [{word, packId, packName, lastGuess, outcome, replays, ts}]
-
-// Submissions (persisted) — one per completed Challenge round
-const SUBS_KEY = "fsd_submissions_v1";
-let submissions = [];           // [{ts, packName, speed, durationSec, attempted, correct, accuracy, elapsedSec}]
-
-// Friendly labels for the optgroup grouping
-const TYPE_LABEL = {
-  length: "By length",
-  exam: "Exam prep",
-  asllex: "Real ASL signs (ASL-LEX)",
-  category: "By category",
-  custom: "Custom"
-};
 
 // Build the layered frame stack (one img per letter, all preloaded)
 const player = document.getElementById("player");
@@ -564,21 +600,17 @@ LETTERS.forEach(l => {
 // DOM refs
 const scoreEl = document.getElementById("score");
 const totalEl = document.getElementById("total");
-const wordNumEl = document.getElementById("word-num");
 const answerEl = document.getElementById("answer");
 const checkBtn = document.getElementById("check-btn");
 const feedbackEl = document.getElementById("feedback");
 const actionRow = document.getElementById("action-row");
 const giveupBtn = document.getElementById("giveup-btn");
-const dictBtn = document.getElementById("dict-btn");
 const nextBtn = document.getElementById("next-btn");
 const dictPanel = document.getElementById("dict-panel");
 const replayBtn = document.getElementById("replay-btn");
-const speedSlider = document.getElementById("speed");
-const speedLabel = document.getElementById("speed-label");
-const speedControl = document.getElementById("speed-control");
+const difficultySelect = document.getElementById("difficulty");
 const packSelect = document.getElementById("pack");
-const roundDurationSelect = document.getElementById("round-duration");
+const wordCountsSelect = document.getElementById("word-counts");
 const roundProgressEl = document.getElementById("round-progress");
 const roundBanner = document.getElementById("round-banner");
 const roundBannerTitle = document.getElementById("round-banner-title");
@@ -586,25 +618,22 @@ const roundBannerSub = document.getElementById("round-banner-sub");
 const newRoundBtn = document.getElementById("new-round-btn");
 const aslSignLink = document.getElementById("asl-sign-link");
 
-// Mode refs
-const modePracticeBtn = document.getElementById("mode-practice");
-const modeChallengeBtn = document.getElementById("mode-challenge");
-const modeDescEl = document.getElementById("mode-desc");
-
-// Alphabet modal refs
+// Alphabet + best-practice modal refs
 const abcBtn = document.getElementById("abc-btn");
+const refAlphabetBtn = document.getElementById("ref-alphabet-btn");
 const abcModal = document.getElementById("abc-modal");
 const abcClose = document.getElementById("abc-close");
+const refBestPracticeBtn = document.getElementById("ref-bestpractice-btn");
+const bpModal = document.getElementById("bp-modal");
+const bpClose = document.getElementById("bp-close");
 
-// Stats / history / submissions
+// Stats / history
 const resultsBadge = document.getElementById("results-badge");
 const statTotal = document.getElementById("stat-total");
 const statCorrect = document.getElementById("stat-correct");
 const statAccuracy = document.getElementById("stat-accuracy");
 const historyBody = document.getElementById("history-body");
 const historyClearBtn = document.getElementById("history-clear");
-const submissionsBody = document.getElementById("submissions-body");
-const submissionsClearBtn = document.getElementById("submissions-clear");
 
 // Tabs
 const tabButtons = document.querySelectorAll(".tab-btn");
@@ -615,66 +644,42 @@ const tabPanels = {
 const timeEl = document.getElementById("time");
 const progressBar = document.getElementById("progress-bar");
 
-// Speed handling
-speedSlider.addEventListener("input", e => {
+// ── Difficulty (speed) handling ──────────────────────
+difficultySelect.addEventListener("change", e => {
   speed = parseFloat(e.target.value);
-  speedLabel.textContent = speed.toFixed(1) + "x";
+  startNewRound();
 });
 
-// Pack handling
+// ── Category (pack) handling ─────────────────────────
 packSelect.addEventListener("change", e => {
   currentPackId = e.target.value;
   startNewRound();
 });
 
-// Round-duration handling
-roundDurationSelect.addEventListener("change", e => {
-  roundDurationSec = parseInt(e.target.value, 10);
+// ── Word-counts handling ─────────────────────────────
+wordCountsSelect.addEventListener("change", e => {
+  roundSize = parseInt(e.target.value, 10);
   startNewRound();
 });
 
 // New round button
 newRoundBtn.addEventListener("click", startNewRound);
 
-// ── Mode handling ────────────────────────────────────
-function applyMode() {
-  const challenge = mode === "challenge";
-  modePracticeBtn.classList.toggle("active", !challenge);
-  modeChallengeBtn.classList.toggle("active", challenge);
-  // Challenge-only controls
-  roundDurationSelect.style.display = challenge ? "" : "none";
-  modeDescEl.textContent = challenge
-    ? "Timed. Pack and speed lock for the round; each finished round is saved as a submission."
-    : "Untimed. Explore freely, look words up, and press Enter to move on.";
-  // In practice mode the round is effectively unlimited
-  roundDurationSec = challenge ? parseInt(roundDurationSelect.value, 10) : 0;
-}
-function setMode(next) {
-  if (mode === next) return;
-  mode = next;
-  try { localStorage.setItem(MODE_KEY, mode); } catch (e) {}
-  applyMode();
-  startNewRound();
-}
-modePracticeBtn.addEventListener("click", () => setMode("practice"));
-modeChallengeBtn.addEventListener("click", () => setMode("challenge"));
-
-// Lock / unlock pack + speed selectors during an active challenge round
-function setControlsLocked(locked) {
-  packSelect.disabled = locked;
-  roundDurationSelect.disabled = locked;
-  speedSlider.disabled = locked;
-  speedControl.classList.toggle("locked", locked);
-}
-
-// ── Alphabet modal ───────────────────────────────────
-function openAbc() { abcModal.classList.add("open"); }
-function closeAbc() { abcModal.classList.remove("open"); }
-abcBtn.addEventListener("click", openAbc);
-abcClose.addEventListener("click", closeAbc);
-abcModal.addEventListener("click", e => { if (e.target === abcModal) closeAbc(); });
+// ── Modals ───────────────────────────────────────────
+function openModal(m) { m.classList.add("open"); }
+function closeModal(m) { m.classList.remove("open"); }
+abcBtn.addEventListener("click", () => openModal(abcModal));
+refAlphabetBtn.addEventListener("click", () => openModal(abcModal));
+abcClose.addEventListener("click", () => closeModal(abcModal));
+abcModal.addEventListener("click", e => { if (e.target === abcModal) closeModal(abcModal); });
+refBestPracticeBtn.addEventListener("click", () => openModal(bpModal));
+bpClose.addEventListener("click", () => closeModal(bpModal));
+bpModal.addEventListener("click", e => { if (e.target === bpModal) closeModal(bpModal); });
 document.addEventListener("keydown", e => {
-  if (e.key === "Escape" && abcModal.classList.contains("open")) closeAbc();
+  if (e.key === "Escape") {
+    if (abcModal.classList.contains("open")) closeModal(abcModal);
+    if (bpModal.classList.contains("open")) closeModal(bpModal);
+  }
 });
 
 // Tab switching
@@ -693,6 +698,13 @@ tabButtons.forEach(btn => {
   });
 });
 
+// History word lookup — clicking a word in the table looks it up in the panel above.
+historyBody.addEventListener("click", e => {
+  const btn = e.target.closest(".history-word-btn");
+  if (!btn) return;
+  lookup(btn.dataset.word);
+});
+
 // History clear
 historyClearBtn.addEventListener("click", () => {
   if (!attempts.length) return;
@@ -701,16 +713,6 @@ historyClearBtn.addEventListener("click", () => {
     saveAttempts();
     renderResultsTab();
     updateResultsBadge();
-  }
-});
-
-// Submissions clear
-submissionsClearBtn.addEventListener("click", () => {
-  if (!submissions.length) return;
-  if (confirm(`Delete all ${submissions.length} submissions? This can't be undone.`)) {
-    submissions = [];
-    saveSubmissions();
-    renderResultsTab();
   }
 });
 
@@ -724,16 +726,6 @@ function loadAttempts() {
 function saveAttempts() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(attempts)); }
   catch (e) { /* private browsing, quota, etc. — silently skip */ }
-}
-function loadSubmissions() {
-  try {
-    const raw = localStorage.getItem(SUBS_KEY);
-    submissions = raw ? JSON.parse(raw) : [];
-  } catch (e) { submissions = []; }
-}
-function saveSubmissions() {
-  try { localStorage.setItem(SUBS_KEY, JSON.stringify(submissions)); }
-  catch (e) {}
 }
 function recordAttempt(outcome) {
   const pack = packsById[currentPackId];
@@ -753,15 +745,14 @@ function updateResultsBadge() {
   resultsBadge.textContent = attempts.length;
 }
 
-// ── Stats + history + submissions rendering ──────────
+// ── Stats + history rendering ────────────────────────
 function renderResultsTab() {
-  const total = attempts.length;
+  const t = attempts.length;
   const correct = attempts.filter(a => a.outcome === "correct").length;
-  const acc = total ? Math.round((correct / total) * 100) : 0;
-  statTotal.textContent = total;
+  const acc = t ? Math.round((correct / t) * 100) : 0;
+  statTotal.textContent = t;
   statCorrect.textContent = correct;
   statAccuracy.textContent = acc + "%";
-  renderSubmissions();
   renderHistory();
 }
 function renderHistory() {
@@ -778,7 +769,7 @@ function renderHistory() {
     const rowClass = a.outcome === "correct" ? "row-correct" : "row-gaveup";
     const icon = a.outcome === "correct" ? "✓ correct" : "⊘ gave up";
     return `<tr class="${rowClass}">
-      <td class="history-word">${a.word}</td>
+      <td><button class="history-word-btn" data-word="${a.word}">${a.word}</button></td>
       <td class="history-guess">${a.lastGuess || "—"}</td>
       <td class="history-outcome ${okClass}">${icon}</td>
       <td class="history-pack">${a.packName}</td>
@@ -789,39 +780,7 @@ function renderHistory() {
     <div class="history-scroll">
       <table class="history-table">
         <thead><tr>
-          <th>Word</th><th>Your answer</th><th>Outcome</th><th>Pack</th><th>When</th>
-        </tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>`;
-}
-function renderSubmissions() {
-  if (!submissions.length) {
-    submissionsBody.innerHTML = `
-      <div class="history-empty">
-        <div class="history-empty-icon">⏱</div>
-        <div>No submissions yet. Finish a Challenge round to log one here.</div>
-      </div>`;
-    return;
-  }
-  const rows = submissions.slice().reverse().map((s, i) => {
-    const n = submissions.length - i;   // submission number (oldest = 1)
-    const accClass = s.accuracy >= 80 ? "hi" : (s.accuracy >= 50 ? "mid" : "lo");
-    return `<tr>
-      <td class="history-word">#${n}</td>
-      <td class="history-pack">${s.packName}</td>
-      <td>${s.speed.toFixed(2)}x</td>
-      <td>${s.correct}/${s.attempted}</td>
-      <td class="sub-acc ${accClass}">${s.accuracy}%</td>
-      <td>${fmtMMSS(s.elapsedSec)}</td>
-      <td class="history-time">${relTime(s.ts)}</td>
-    </tr>`;
-  }).join("");
-  submissionsBody.innerHTML = `
-    <div class="history-scroll">
-      <table class="history-table">
-        <thead><tr>
-          <th>#</th><th>Pack</th><th>Speed</th><th>Score</th><th>Accuracy</th><th>Time</th><th>When</th>
+          <th>Word</th><th>Your answer</th><th>Outcome</th><th>Category</th><th>When</th>
         </tr></thead>
         <tbody>${rows}</tbody>
       </table>
@@ -836,105 +795,90 @@ function relTime(ts) {
   return d.toLocaleDateString() + " " + d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
 }
 
-// ── Round logic ──────────────────────────────────────
+// ── Round logic (word-count based) ───────────────────
 function startNewRound() {
-  clearTimeout(roundEndTimer);
-  clearInterval(roundTickTimer);
   roundIndex = 0;
   roundCorrect = 0;
   roundFinalized = 0;
   roundComplete = false;
-  roundStartTs = Date.now();
   roundBanner.classList.remove("show");
-
-  if (mode === "challenge") {
-    // Lock the chosen pack + speed for the whole round
-    roundPackId = currentPackId;
-    roundSpeed = speed;
-    setControlsLocked(true);
-    if (roundDurationSec > 0) {
-      roundEndTimer = setTimeout(endRound, roundDurationSec * 1000);
-      roundTickTimer = setInterval(updateRoundProgress, 1000);
-    }
-  } else {
-    setControlsLocked(false);
-  }
+  buildQueue();
+  answerEl.disabled = false;
+  checkBtn.disabled = false;
+  nextBtn.disabled = false;
   loadNextWord();
 }
+
+// Fisher–Yates shuffle into a fresh no-replacement queue for the current pack.
+// This is the fix for the "words always repeat" bug: every word in a round is
+// drawn from a shuffled deck, so no word recurs until the deck is exhausted.
+function buildQueue() {
+  const pool = (packsById[currentPackId]?.words || []).slice();
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  roundQueue = pool;
+}
+
+// Returns {word, sign} pulled from the shuffled queue. Refills (reshuffles) if a
+// round is longer than the pack, avoiding an immediate repeat across the seam.
+function nextFromQueue() {
+  if (!roundQueue.length) {
+    const last = currentWord;
+    buildQueue();
+    if (roundQueue.length > 1 && entryWord(roundQueue[roundQueue.length - 1]) === last) {
+      // swap the about-to-be-drawn entry with the front so we don't repeat
+      [roundQueue[roundQueue.length - 1], roundQueue[0]] =
+        [roundQueue[0], roundQueue[roundQueue.length - 1]];
+    }
+  }
+  const entry = roundQueue.pop();
+  if (typeof entry === "string") return { word: entry, sign: null };
+  return { word: entry.w, sign: entry.s || null };
+}
+function entryWord(entry) {
+  return typeof entry === "string" ? entry : entry.w;
+}
+
 function endRound() {
   if (roundComplete) return;
   roundComplete = true;
-  clearTimeout(roundEndTimer);
-  clearInterval(roundTickTimer);
   const pct = roundFinalized ? Math.round((roundCorrect / roundFinalized) * 100) : 0;
-  const elapsedSec = Math.round((Date.now() - roundStartTs) / 1000);
-
-  // Save this challenge round as a submission
-  recordSubmission(elapsedSec, pct);
-
   roundBannerTitle.textContent = "Round complete";
   roundBannerSub.textContent =
-    `${roundFinalized} ${roundFinalized === 1 ? "word" : "words"} attempted, ${roundCorrect} correct (${pct}%) in ${fmtMMSS(elapsedSec)}. Saved to your submissions.`;
+    `${roundCorrect} of ${roundFinalized} correct (${pct}%).`;
   roundBanner.classList.add("show");
   answerEl.disabled = true;
   checkBtn.disabled = true;
   nextBtn.disabled = true;
-  setControlsLocked(false);
-}
-function recordSubmission(elapsedSec, pct) {
-  const pack = packsById[roundPackId];
-  submissions.push({
-    ts: Date.now(),
-    packName: pack ? pack.name : roundPackId,
-    speed: roundSpeed,
-    durationSec: roundDurationSec,
-    attempted: roundFinalized,
-    correct: roundCorrect,
-    accuracy: pct,
-    elapsedSec: elapsedSec
-  });
-  saveSubmissions();
 }
 function updateRoundProgress() {
-  if (roundComplete) return;
-  if (mode === "challenge" && roundDurationSec > 0) {
-    const elapsedSec = Math.floor((Date.now() - roundStartTs) / 1000);
-    const remaining = Math.max(0, roundDurationSec - elapsedSec);
-    roundProgressEl.textContent = `Word ${Math.max(1, roundIndex)} · ${fmtMMSS(remaining)} left`;
-    if (remaining <= 0) endRound();
-  } else {
-    roundProgressEl.textContent = `Word ${Math.max(1, roundIndex)}`;
-  }
-}
-function fmtMMSS(totalSec) {
-  const m = Math.floor(totalSec / 60);
-  const s = totalSec % 60;
-  return `${m}:${String(s).padStart(2, "0")}`;
+  roundProgressEl.textContent = `Word ${Math.max(1, roundIndex)} of ${roundSize}`;
 }
 
-// Load word bank (v3 schema with packs array; word entries may be strings or {w,s})
+// Load word bank (schema v4: packs array of {w,s} entries, all ASL-LEX)
 async function loadWords() {
   try {
     const res = await fetch("words.json");
     const data = await res.json();
     ingestPacks(data.packs || []);
   } catch (e) {
-    // Fallback when fetch is blocked (e.g. file://)
+    // Fallback when fetch is blocked (e.g. file://) — small starter set per bucket.
     ingestPacks([
-      { id: "len-3", name: "3 letters", type: "length",
-        words: ["CAT","DOG","SUN","BUS","RED","TEA","BEE","KEY"] },
-      { id: "len-4", name: "4 letters", type: "length",
-        words: ["MOON","RAIN","BOOK","FISH","STAR","WAVE","SNOW","JAZZ"] },
-      { id: "len-5", name: "5 letters", type: "length",
-        words: ["APPLE","TIGER","PIANO","CLOUD","RIVER","DREAM","FROST","MAPLE"] },
-      { id: "len-6plus", name: "6+ letters", type: "length",
-        words: ["COFFEE","PURPLE","GARDEN","PUZZLE","WONDER","JOURNEY","ECLIPSE","RAINBOW"] },
-      { id: "asllex-4", name: "ASL-LEX · 4 letters", type: "asllex",
-        words: [{w:"LOVE",s:"love"},{w:"HELP",s:"help"},{w:"WORK",s:"work"},{w:"HOME",s:"home"},{w:"GOOD",s:"good"}] },
-      { id: "ielts-academic", name: "IELTS Academic Core", type: "exam",
-        words: ["ACADEMIC","ANALYZE","APPROACH","BENEFIT","CONCEPT","CONTEXT","DATA","EVALUATE","FACTOR","RESEARCH"] },
-      { id: "cet-4", name: "CET-4 Core", type: "exam",
-        words: ["ACCEPT","ACHIEVE","ANALYZE","APPROACH","BENEFIT","CHALLENGE","COMPARE","CONNECT","DEVELOP","ENSURE"] }
+      { id: "short", name: "Short — up to 4 letters", type: "asllex",
+        words: [{w:"YOU",s:"you"},{w:"FOR",s:"for"},{w:"LOVE",s:"love"},{w:"HELP",s:"help"},
+                {w:"WORK",s:"work"},{w:"HOME",s:"home"},{w:"GOOD",s:"good"},{w:"TIME",s:"time"},
+                {w:"NAME",s:"name"},{w:"BOOK",s:"book"}] },
+      { id: "medium", name: "Medium — 5 to 6 letters", type: "asllex",
+        words: [{w:"THINK",s:"think"},{w:"WATER",s:"water"},{w:"HAPPY",s:"happy"},{w:"MONEY",s:"money_2"},
+                {w:"HOUSE",s:"house"},{w:"FRIEND",s:"friend"},{w:"FAMILY",s:"family"},{w:"SCHOOL",s:"school"},
+                {w:"PEOPLE",s:"people"},{w:"BETTER",s:"better"}] },
+      { id: "long", name: "Long — 7+ letters", type: "asllex",
+        words: [{w:"BECAUSE",s:"because"},{w:"NOTHING",s:"nothing"},{w:"PROBLEM",s:"problem_2"},
+                {w:"PROMISE",s:"promise"},{w:"PERFECT",s:"perfect"},{w:"TOGETHER",s:"together"},
+                {w:"REMEMBER",s:"remember"},{w:"UNDERSTAND",s:"understand"},{w:"IMPORTANT",s:"important"},
+                {w:"DIFFERENT",s:"different"}] }
     ]);
   }
 }
@@ -944,46 +888,21 @@ function ingestPacks(arr) {
   packsById = {};
   arr.forEach(p => { packsById[p.id] = p; });
   buildPackSelector();
-  // Validate currentPackId
   if (!packsById[currentPackId]) {
-    currentPackId = packs[0]?.id || "len-4";
+    currentPackId = packs[0]?.id || "short";
   }
   packSelect.value = currentPackId;
 }
 
+// Flat category selector — one option per length bucket.
 function buildPackSelector() {
-  // Group packs by type, in the order types first appear.
-  const groups = [];
-  const groupMap = {};
-  packs.forEach(p => {
-    const type = p.type || "custom";
-    if (!groupMap[type]) {
-      groupMap[type] = { type, label: TYPE_LABEL[type] || type, packs: [] };
-      groups.push(groupMap[type]);
-    }
-    groupMap[type].packs.push(p);
-  });
   packSelect.innerHTML = "";
-  groups.forEach(g => {
-    const og = document.createElement("optgroup");
-    og.label = g.label;
-    g.packs.forEach(p => {
-      const opt = document.createElement("option");
-      opt.value = p.id;
-      opt.textContent = p.name;
-      og.appendChild(opt);
-    });
-    packSelect.appendChild(og);
+  packs.forEach(p => {
+    const opt = document.createElement("option");
+    opt.value = p.id;
+    opt.textContent = p.name;
+    packSelect.appendChild(opt);
   });
-}
-
-// Returns {word, sign} — sign is the ASL-LEX gloss for a deep-link, or null.
-function pickWord() {
-  const pool = packsById[currentPackId]?.words || [];
-  if (!pool.length) return { word: "WORD", sign: null };
-  const entry = pool[Math.floor(Math.random() * pool.length)];
-  if (typeof entry === "string") return { word: entry, sign: null };
-  return { word: entry.w, sign: entry.s || null };
 }
 
 // Animation: overlap fade between letters
@@ -1054,12 +973,13 @@ function animateWord(word, slowFactor = 1) {
 
 function loadNextWord() {
   if (roundComplete) return;
-  const picked = pickWord();
+  // End the round once we've finalized roundSize words.
+  if (roundFinalized >= roundSize) { endRound(); return; }
+  const picked = nextFromQueue();
   currentWord = picked.word;
   currentSign = picked.sign;
   currentIndex++;
   roundIndex++;
-  wordNumEl.textContent = currentIndex;
   isRevealed = false;
   currentReplays = 0;
   lastGuess = "";
@@ -1070,8 +990,6 @@ function loadNextWord() {
   feedbackEl.style.display = "none";
   actionRow.style.display = "none";
   giveupBtn.style.display = "";
-  dictPanel.classList.remove("open");
-  dictPanel.innerHTML = "";
   aslSignLink.style.display = "none";
   checkBtn.disabled = false;
   checkBtn.classList.remove("correct");
@@ -1083,7 +1001,7 @@ function loadNextWord() {
   answerEl.focus();
 }
 
-// Reveal the "See the real ASL sign" link when this word has an ASL-LEX gloss
+// Reveal the "How to sign in ASL" link when this word has an ASL-LEX gloss
 function showAslSignLink() {
   if (currentSign) {
     aslSignLink.href = `https://asl-lex.org/visualization/?sign=${encodeURIComponent(currentSign)}`;
@@ -1148,22 +1066,26 @@ function giveUp() {
   finalizeUI();
 }
 
-// Dictionary lookup
-async function lookupWord() {
-  const word = currentWord.toLowerCase();
-  dictPanel.classList.add("open");
-  dictPanel.innerHTML = `<p class="dict-def">Loading definition…</p>`;
+// Dictionary lookup — generic over any word, rendered into the Results-tab panel.
+// (Moved out of the practice flow: practice is for recognition; meanings are a
+//  review activity on the Results tab, looked up by tapping a history word.)
+async function lookup(word) {
+  if (!word) return;
+  const w = word.toLowerCase();
+  const display = word.toUpperCase();
+  dictPanel.innerHTML = `<p class="dict-def">Loading definition for “${display}”…</p>`;
+  if (dictPanel.scrollIntoView) dictPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
   try {
-    const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+    const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${w}`);
     if (!res.ok) throw new Error("not found");
     const data = await res.json();
     renderDict(data[0]);
   } catch (e) {
     dictPanel.innerHTML = `
-      <p class="dict-word">${currentWord}</p>
+      <p class="dict-word">${display}</p>
       <p class="dict-def">No definition available from dictionaryapi.dev.</p>
       <a class="dict-mw" target="_blank" rel="noopener"
-         href="https://www.merriam-webster.com/dictionary/${word}">Try Merriam-Webster ↗</a>`;
+         href="https://www.merriam-webster.com/dictionary/${w}">Try Merriam-Webster ↗</a>`;
   }
 }
 
@@ -1226,9 +1148,6 @@ checkBtn.addEventListener("click", checkAnswer);
 answerEl.addEventListener("keydown", e => {
   if (e.key === "Enter") checkAnswer();
 });
-// (Keyboard-driven Next is handled by focusing the Next button in finalizeUI;
-//  a focused <button> is activated natively by Enter, so no global key handler
-//  is needed — avoiding any double-advance.)
 function replayCurrent() {
   if (roundComplete || !currentWord) return;
   currentReplays++;
@@ -1236,7 +1155,6 @@ function replayCurrent() {
 }
 replayBtn.addEventListener("click", replayCurrent);
 giveupBtn.addEventListener("click", giveUp);
-dictBtn.addEventListener("click", lookupWord);
 nextBtn.addEventListener("click", loadNextWord);
 
 // Expose for inline onclick
@@ -1245,13 +1163,9 @@ window.playAudio = playAudio;
 // Boot
 (async () => {
   loadAttempts();
-  loadSubmissions();
   updateResultsBadge();
-  try {
-    const savedMode = localStorage.getItem(MODE_KEY);
-    if (savedMode === "challenge" || savedMode === "practice") mode = savedMode;
-  } catch (e) {}
-  applyMode();
+  speed = parseFloat(difficultySelect.value);
+  roundSize = parseInt(wordCountsSelect.value, 10);
   await loadWords();
   startNewRound();
 })();

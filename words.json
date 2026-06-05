@@ -1,334 +1,12 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
+  "note": "All words sourced from ASL-LEX so every word has a real-sign deep link. Category = length bucket.",
   "packs": [
     {
-      "id": "len-3",
-      "name": "3 letters",
-      "type": "length",
-      "words": [
-        "CAT",
-        "DOG",
-        "SUN",
-        "MAP",
-        "BUS",
-        "RED",
-        "AIR",
-        "TEA",
-        "HOT",
-        "ICE",
-        "OWL",
-        "FOX",
-        "BEE",
-        "ANT",
-        "EGG",
-        "PEN",
-        "CAR",
-        "KEY",
-        "BAG",
-        "BOX"
-      ]
-    },
-    {
-      "id": "len-4",
-      "name": "4 letters",
-      "type": "length",
-      "words": [
-        "MOON",
-        "RAIN",
-        "BOOK",
-        "FISH",
-        "LIME",
-        "STAR",
-        "WOLF",
-        "DESK",
-        "LAMP",
-        "FERN",
-        "JADE",
-        "MILK",
-        "WAVE",
-        "QUIZ",
-        "ZOOM",
-        "JAZZ",
-        "PINK",
-        "RING",
-        "SNOW",
-        "WIND"
-      ]
-    },
-    {
-      "id": "len-5",
-      "name": "5 letters",
-      "type": "length",
-      "words": [
-        "APPLE",
-        "TIGER",
-        "PIANO",
-        "CLOUD",
-        "RIVER",
-        "FLAME",
-        "ROBIN",
-        "OCEAN",
-        "BREAD",
-        "DREAM",
-        "STORM",
-        "PLUMB",
-        "CRISP",
-        "SHINE",
-        "GLASS",
-        "QUILT",
-        "FROST",
-        "PEARL",
-        "MAPLE",
-        "SPICE"
-      ]
-    },
-    {
-      "id": "len-6plus",
-      "name": "6+ letters",
-      "type": "length",
-      "words": [
-        "COFFEE",
-        "PURPLE",
-        "GARDEN",
-        "PUZZLE",
-        "WONDER",
-        "HARVEST",
-        "JOURNEY",
-        "MYSTERY",
-        "OCTOPUS",
-        "RAINBOW",
-        "SILENCE",
-        "WHISPER",
-        "ECLIPSE",
-        "FIREFLY",
-        "LANTERN",
-        "MOUNTAIN",
-        "TWILIGHT",
-        "BLOSSOM",
-        "ARCHIVE",
-        "BALCONY"
-      ]
-    },
-    {
-      "id": "ielts-academic",
-      "name": "IELTS Academic Core (100)",
-      "type": "exam",
-      "source": "Coxhead Academic Word List (AWL) headwords, hand-curated for IELTS Academic",
-      "words": [
-        "ACADEMIC",
-        "ACCESS",
-        "ACQUIRE",
-        "AFFECT",
-        "ANALYZE",
-        "APPROACH",
-        "AREA",
-        "ASPECT",
-        "ASSESS",
-        "ASSIST",
-        "ASSUME",
-        "AVAILABLE",
-        "BENEFIT",
-        "BUDGET",
-        "CATEGORY",
-        "CHAPTER",
-        "COMMUNITY",
-        "COMPLEX",
-        "CONCEPT",
-        "CONDUCT",
-        "CONSIST",
-        "CONSTRUCT",
-        "CONSUME",
-        "CONTEXT",
-        "CULTURE",
-        "DATA",
-        "DEFINE",
-        "DERIVE",
-        "DESIGN",
-        "ECONOMY",
-        "ELEMENT",
-        "ENVIRONMENT",
-        "ESTABLISH",
-        "EVALUATE",
-        "EVIDENT",
-        "EVOLVE",
-        "EXPORT",
-        "FACTOR",
-        "FEATURE",
-        "FINANCE",
-        "FOCUS",
-        "FUNCTION",
-        "GENERATE",
-        "GLOBAL",
-        "HENCE",
-        "IDENTIFY",
-        "IMPACT",
-        "INCOME",
-        "INDICATE",
-        "INDIVIDUAL",
-        "INSTITUTE",
-        "INTERPRET",
-        "INVOLVE",
-        "ISSUE",
-        "ITEM",
-        "JOURNAL",
-        "LABOUR",
-        "LECTURE",
-        "LEGAL",
-        "MAINTAIN",
-        "MAJOR",
-        "METHOD",
-        "NORMAL",
-        "OBTAIN",
-        "OCCUR",
-        "OUTCOME",
-        "PARTICIPATE",
-        "PERCENT",
-        "PERIOD",
-        "POLICY",
-        "POSITIVE",
-        "POTENTIAL",
-        "PREVIOUS",
-        "PRIMARY",
-        "PROCESS",
-        "PURCHASE",
-        "RANGE",
-        "REGION",
-        "REGULATE",
-        "RELEVANT",
-        "REQUIRE",
-        "RESEARCH",
-        "RESIDE",
-        "RESOURCE",
-        "RESPOND",
-        "ROLE",
-        "SECTOR",
-        "SECURE",
-        "SEEK",
-        "SELECT",
-        "SIGNIFICANT",
-        "SIMILAR",
-        "SOURCE",
-        "SPECIFIC",
-        "STRATEGY",
-        "STRUCTURE",
-        "THEORY",
-        "TRADITION",
-        "TRANSFER",
-        "VARY"
-      ]
-    },
-    {
-      "id": "cet-4",
-      "name": "CET-4 Core (100)",
-      "type": "exam",
-      "source": "Common CET-4 high-frequency vocabulary, hand-curated",
-      "words": [
-        "ABANDON",
-        "ABSORB",
-        "ACCEPT",
-        "ACHIEVE",
-        "ADOPT",
-        "ADVANCE",
-        "AFFECT",
-        "AGREE",
-        "ALLOW",
-        "AMUSE",
-        "ANALYZE",
-        "ANNOUNCE",
-        "APPLY",
-        "APPROACH",
-        "ARGUE",
-        "ARRIVE",
-        "ASSIST",
-        "ASSUME",
-        "ATTRACT",
-        "AVOID",
-        "BALANCE",
-        "BEHAVE",
-        "BENEFIT",
-        "BORROW",
-        "BUDGET",
-        "BURDEN",
-        "CANCEL",
-        "CAREER",
-        "CASUAL",
-        "CHARGE",
-        "CLAIM",
-        "CLIMATE",
-        "COMFORT",
-        "COMMAND",
-        "COMPARE",
-        "COMPETE",
-        "COMPLEX",
-        "CONCEPT",
-        "CONFIRM",
-        "CONNECT",
-        "CONSUME",
-        "CONTAIN",
-        "CONTROL",
-        "COURAGE",
-        "CREATE",
-        "CRISIS",
-        "CULTURE",
-        "DECIDE",
-        "DEFEND",
-        "DELIVER",
-        "DEMAND",
-        "DEPEND",
-        "DESIGN",
-        "DEVELOP",
-        "DIFFER",
-        "DISPLAY",
-        "DIVIDE",
-        "ENABLE",
-        "ENGAGE",
-        "ENSURE",
-        "ENTIRE",
-        "ESCAPE",
-        "EVOLVE",
-        "EXPAND",
-        "EXPECT",
-        "EXTEND",
-        "FACTOR",
-        "FAMOUS",
-        "FAVOR",
-        "FIGURE",
-        "FINANCE",
-        "FLEXIBLE",
-        "FOCUS",
-        "FOREIGN",
-        "FORMAL",
-        "FORWARD",
-        "GATHER",
-        "GENTLE",
-        "GLOBAL",
-        "GOVERN",
-        "GRANT",
-        "GUARANTEE",
-        "GUIDE",
-        "HABIT",
-        "HANDLE",
-        "HARVEST",
-        "HEALTH",
-        "HONEST",
-        "HONOR",
-        "IDEAL",
-        "IGNORE",
-        "IMPACT",
-        "IMPORT",
-        "IMPROVE",
-        "INCLUDE",
-        "INCREASE",
-        "INDEED",
-        "INFORM",
-        "INSIST",
-        "INSPIRE"
-      ]
-    },
-    {
-      "id": "asllex-3",
-      "name": "ASL-LEX · 3 letters",
+      "id": "short",
+      "name": "Short — up to 4 letters",
       "type": "asllex",
+      "category": "length",
       "source": "ASL-LEX 2.0 (Sevcikova Sehyr et al., 2021) — CC BY-NC 4.0",
       "words": [
         {
@@ -922,15 +600,7 @@
         {
           "w": "FRY",
           "s": "fry"
-        }
-      ]
-    },
-    {
-      "id": "asllex-4",
-      "name": "ASL-LEX · 4 letters",
-      "type": "asllex",
-      "source": "ASL-LEX 2.0 (Sevcikova Sehyr et al., 2021) — CC BY-NC 4.0",
-      "words": [
+        },
         {
           "w": "THAT",
           "s": "that"
@@ -1406,9 +1076,10 @@
       ]
     },
     {
-      "id": "asllex-5",
-      "name": "ASL-LEX · 5 letters",
+      "id": "medium",
+      "name": "Medium — 5 to 6 letters",
       "type": "asllex",
+      "category": "length",
       "source": "ASL-LEX 2.0 (Sevcikova Sehyr et al., 2021) — CC BY-NC 4.0",
       "words": [
         {
@@ -1886,22 +1557,10 @@
         {
           "w": "ENJOY",
           "s": "enjoy"
-        }
-      ]
-    },
-    {
-      "id": "asllex-6plus",
-      "name": "ASL-LEX · 6+ letters",
-      "type": "asllex",
-      "source": "ASL-LEX 2.0 (Sevcikova Sehyr et al., 2021) — CC BY-NC 4.0",
-      "words": [
+        },
         {
           "w": "REALLY",
           "s": "really"
-        },
-        {
-          "w": "SOMETHING",
-          "s": "something"
         },
         {
           "w": "PEOPLE",
@@ -1912,16 +1571,8 @@
           "s": "please"
         },
         {
-          "w": "BECAUSE",
-          "s": "because"
-        },
-        {
           "w": "SHOULD",
           "s": "should"
-        },
-        {
-          "w": "NOTHING",
-          "s": "nothing"
         },
         {
           "w": "BETTER",
@@ -1936,16 +1587,8 @@
           "s": "things"
         },
         {
-          "w": "EVERYTHING",
-          "s": "everything"
-        },
-        {
           "w": "ALWAYS",
           "s": "always"
-        },
-        {
-          "w": "BELIEVE",
-          "s": "believe_2"
         },
         {
           "w": "FATHER",
@@ -1956,28 +1599,12 @@
           "s": "listen"
         },
         {
-          "w": "REMEMBER",
-          "s": "remember"
-        },
-        {
           "w": "ENOUGH",
           "s": "enough"
         },
         {
-          "w": "UNDERSTAND",
-          "s": "understand"
-        },
-        {
           "w": "MOTHER",
           "s": "mother"
-        },
-        {
-          "w": "MORNING",
-          "s": "morning"
-        },
-        {
-          "w": "YOURSELF",
-          "s": "yourself"
         },
         {
           "w": "FRIEND",
@@ -1986,10 +1613,6 @@
         {
           "w": "PRETTY",
           "s": "pretty"
-        },
-        {
-          "w": "TOGETHER",
-          "s": "together"
         },
         {
           "w": "MINUTE",
@@ -2004,32 +1627,12 @@
           "s": "family"
         },
         {
-          "w": "WITHOUT",
-          "s": "without"
-        },
-        {
           "w": "MYSELF",
           "s": "myself"
         },
         {
-          "w": "TOMORROW",
-          "s": "tomorrow"
-        },
-        {
           "w": "SCHOOL",
           "s": "school"
-        },
-        {
-          "w": "PROBLEM",
-          "s": "problem_2"
-        },
-        {
-          "w": "BUSINESS",
-          "s": "business"
-        },
-        {
-          "w": "BROTHER",
-          "s": "brother"
         },
         {
           "w": "DOCTOR",
@@ -2044,20 +1647,12 @@
           "s": "happen"
         },
         {
-          "w": "WHATEVER",
-          "s": "whatever"
-        },
-        {
           "w": "CHANCE",
           "s": "chance"
         },
         {
           "w": "CHANGE",
           "s": "change"
-        },
-        {
-          "w": "TROUBLE",
-          "s": "trouble"
         },
         {
           "w": "PERSON",
@@ -2068,28 +1663,12 @@
           "s": "inside"
         },
         {
-          "w": "DIFFERENT",
-          "s": "different"
-        },
-        {
-          "w": "IMPORTANT",
-          "s": "important"
-        },
-        {
           "w": "OFFICE",
           "s": "office"
         },
         {
           "w": "DINNER",
           "s": "dinner_1"
-        },
-        {
-          "w": "AGAINST",
-          "s": "against"
-        },
-        {
-          "w": "HUSBAND",
-          "s": "husband"
         },
         {
           "w": "REASON",
@@ -2112,16 +1691,193 @@
           "s": "sister"
         },
         {
+          "w": "ANSWER",
+          "s": "answer"
+        },
+        {
+          "w": "STREET",
+          "s": "street"
+        },
+        {
+          "w": "COFFEE",
+          "s": "coffee"
+        },
+        {
+          "w": "SCARED",
+          "s": "scared"
+        },
+        {
+          "w": "FIGURE",
+          "s": "figure"
+        },
+        {
+          "w": "CANNOT",
+          "s": "cannot"
+        },
+        {
+          "w": "FOLLOW",
+          "s": "follow_1"
+        },
+        {
+          "w": "WONDER",
+          "s": "wonder"
+        },
+        {
+          "w": "BECOME",
+          "s": "become"
+        },
+        {
+          "w": "SECRET",
+          "s": "secret"
+        },
+        {
+          "w": "EXPECT",
+          "s": "expect"
+        },
+        {
+          "w": "FUTURE",
+          "s": "future"
+        },
+        {
+          "w": "FINISH",
+          "s": "finish"
+        },
+        {
+          "w": "CAUGHT",
+          "s": "caught"
+        },
+        {
+          "w": "SYSTEM",
+          "s": "system"
+        },
+        {
+          "w": "CHARGE",
+          "s": "charge"
+        },
+        {
+          "w": "MIDDLE",
+          "s": "middle"
+        },
+        {
+          "w": "STRONG",
+          "s": "strong"
+        },
+        {
+          "w": "WINDOW",
+          "s": "window"
+        },
+        {
+          "w": "RECORD",
+          "s": "record"
+        },
+        {
+          "w": "LETTER",
+          "s": "letter"
+        },
+        {
+          "w": "LAWYER",
+          "s": "lawyer"
+        }
+      ]
+    },
+    {
+      "id": "long",
+      "name": "Long — 7+ letters",
+      "type": "asllex",
+      "category": "length",
+      "source": "ASL-LEX 2.0 (Sevcikova Sehyr et al., 2021) — CC BY-NC 4.0",
+      "words": [
+        {
+          "w": "SOMETHING",
+          "s": "something"
+        },
+        {
+          "w": "BECAUSE",
+          "s": "because"
+        },
+        {
+          "w": "NOTHING",
+          "s": "nothing"
+        },
+        {
+          "w": "EVERYTHING",
+          "s": "everything"
+        },
+        {
+          "w": "BELIEVE",
+          "s": "believe_2"
+        },
+        {
+          "w": "REMEMBER",
+          "s": "remember"
+        },
+        {
+          "w": "UNDERSTAND",
+          "s": "understand"
+        },
+        {
+          "w": "MORNING",
+          "s": "morning"
+        },
+        {
+          "w": "YOURSELF",
+          "s": "yourself"
+        },
+        {
+          "w": "TOGETHER",
+          "s": "together"
+        },
+        {
+          "w": "WITHOUT",
+          "s": "without"
+        },
+        {
+          "w": "TOMORROW",
+          "s": "tomorrow"
+        },
+        {
+          "w": "PROBLEM",
+          "s": "problem_2"
+        },
+        {
+          "w": "BUSINESS",
+          "s": "business"
+        },
+        {
+          "w": "BROTHER",
+          "s": "brother"
+        },
+        {
+          "w": "WHATEVER",
+          "s": "whatever"
+        },
+        {
+          "w": "TROUBLE",
+          "s": "trouble"
+        },
+        {
+          "w": "DIFFERENT",
+          "s": "different"
+        },
+        {
+          "w": "IMPORTANT",
+          "s": "important"
+        },
+        {
+          "w": "AGAINST",
+          "s": "against"
+        },
+        {
+          "w": "HUSBAND",
+          "s": "husband"
+        },
+        {
           "w": "WELCOME",
           "s": "welcome_1"
         },
         {
           "w": "SOMETIMES",
           "s": "sometimes"
-        },
-        {
-          "w": "ANSWER",
-          "s": "answer"
         },
         {
           "w": "CHILDREN",
@@ -2160,14 +1916,6 @@
           "s": "serious"
         },
         {
-          "w": "STREET",
-          "s": "street"
-        },
-        {
-          "w": "COFFEE",
-          "s": "coffee"
-        },
-        {
           "w": "PARENTS",
           "s": "parents"
         },
@@ -2180,28 +1928,12 @@
           "s": "picture"
         },
         {
-          "w": "SCARED",
-          "s": "scared"
-        },
-        {
           "w": "MEETING",
           "s": "meeting"
         },
         {
-          "w": "FIGURE",
-          "s": "figure"
-        },
-        {
-          "w": "CANNOT",
-          "s": "cannot"
-        },
-        {
           "w": "HOSPITAL",
           "s": "hospital"
-        },
-        {
-          "w": "FOLLOW",
-          "s": "follow_1"
         },
         {
           "w": "STRAIGHT",
@@ -2220,32 +1952,12 @@
           "s": "finally"
         },
         {
-          "w": "WONDER",
-          "s": "wonder"
-        },
-        {
-          "w": "BECOME",
-          "s": "become"
-        },
-        {
           "w": "POSSIBLE",
           "s": "possible"
         },
         {
-          "w": "SECRET",
-          "s": "secret"
-        },
-        {
           "w": "CAREFUL",
           "s": "careful"
-        },
-        {
-          "w": "EXPECT",
-          "s": "expect"
-        },
-        {
-          "w": "FUTURE",
-          "s": "future"
         },
         {
           "w": "WEDDING",
@@ -2260,10 +1972,6 @@
           "s": "building"
         },
         {
-          "w": "FINISH",
-          "s": "finish"
-        },
-        {
           "w": "ATTENTION",
           "s": "attention"
         },
@@ -2276,24 +1984,8 @@
           "s": "yesterday"
         },
         {
-          "w": "CAUGHT",
-          "s": "caught"
-        },
-        {
-          "w": "SYSTEM",
-          "s": "system"
-        },
-        {
           "w": "AFTERNOON",
           "s": "afternoon"
-        },
-        {
-          "w": "CHARGE",
-          "s": "charge"
-        },
-        {
-          "w": "MIDDLE",
-          "s": "middle"
         },
         {
           "w": "SURPRISE",
@@ -2308,24 +2000,12 @@
           "s": "missing"
         },
         {
-          "w": "STRONG",
-          "s": "strong"
-        },
-        {
           "w": "STRANGE",
           "s": "strange"
         },
         {
-          "w": "WINDOW",
-          "s": "window"
-        },
-        {
           "w": "INTERESTED",
           "s": "interested"
-        },
-        {
-          "w": "RECORD",
-          "s": "record"
         },
         {
           "w": "COLLEGE",
@@ -2338,10 +2018,6 @@
         {
           "w": "HISTORY",
           "s": "history"
-        },
-        {
-          "w": "LETTER",
-          "s": "letter"
         },
         {
           "w": "SITUATION",
@@ -2358,10 +2034,6 @@
         {
           "w": "IMAGINE",
           "s": "imagine_2"
-        },
-        {
-          "w": "LAWYER",
-          "s": "lawyer"
         },
         {
           "w": "INSTEAD",

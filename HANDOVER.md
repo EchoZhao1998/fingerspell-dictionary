@@ -1,6 +1,6 @@
 # fingerspell-dictionary — HANDOVER
 
-**Current version:** v1.7 (modes + ASL-LEX integration)
+**Current version:** v1.8 (prototype redesign — 3 filters, minimized)
 **v1 shipped:** 2026-06-01
 **Owner:** Echo Zhao
 **Lives at:** `Portofilo/fingerspell-dictionary/`
@@ -130,6 +130,73 @@ matches the "user controls pacing" decision.
 ---
 
 ## Decision log
+
+**2026-06-05 — v1.8 (prototype redesign + feature minimize)**
+Driven by `aslfd_feedback.md` (2026-06-05) + Figma `prototype_0605.pdf`. Goal Echo
+set: *"minimize feature, keep the tool clean and targeted."* Confirmed three product
+calls with Echo before building (Category meaning, how far to strip, poster content).
+- **Three prototype filters replace the old control cluster.** A labelled row of
+  `Difficulty / Category / Word counts` selects now sits above the player:
+  - *Difficulty* drives animation speed: Easy 0.5× / Medium 1× (default) / Hard
+    1.5× / Advanced 2× / Expert 3×. The manual speed slider is **removed** — speed
+    is a difficulty choice now, not a free dial.
+  - *Category* is length-bucketed: Short (≤4) / Medium (5–6) / Long (7+).
+  - *Word counts* sets round size: 5 / 10 (default) / 15 / 20.
+  Changing any of the three starts a fresh round.
+- **Category = length, all sourced from ASL-LEX (Echo's call).** `words.json`
+  rebuilt to **schemaVersion 4**: the four old `asllex-*` packs + the curated
+  length/exam packs are gone, replaced by exactly three packs (`short` 266 /
+  `medium` 174 / `long` 65 = 505 words), every entry `{w,s}` with an ASL-LEX gloss.
+  *Rationale Echo gave:* because every word comes from ASL-LEX, every word always
+  has a real-sign link — fingerspell **and** sign are always available. The
+  IELTS/CET exam packs were **dropped from the picker** (they were Echo's own
+  curation and are unaffected by the CC BY-NC license; they can be reinstated as
+  a separate axis later if exam-prep positioning matters again).
+  - *Bucket boundary note:* feedback wrote "Medium [5,7], Long ≥7" (overlapping at
+    7). Resolved cleanly as Short ≤4 / Medium 5–6 / Long ≥7.
+- **Rounds are word-count based again (reverted from v1.5 time-based).** Round ends
+  after N finalized words; banner reads "K of N correct (X%)". The 3/5/8-min
+  duration selector is removed.
+- **Word-repeat bug fixed.** Echo's logged error ("the loop of words always repeat
+  same word") was random-with-replacement in `pickWord`. Replaced with a
+  Fisher–Yates **no-replacement queue** (`buildQueue` / `nextFromQueue`); a round
+  draws from a shuffled deck so no word recurs until the deck is exhausted, with a
+  seam-swap guard against repeats if a round ever exceeds the pool. Verified: 0
+  duplicate words across 24,000 simulated rounds (3 packs × 4 sizes × 2000).
+- **Practice/Challenge mode toggle removed.** Single clean practice screen. The
+  `fsd_mode_v1` / `fsd_submissions_v1` stores and the Challenge-submissions table
+  are gone. **Results tab kept** (Echo's call): stat cards (Total / Correct /
+  Accuracy) + Response History persist via `fsd_attempts_v1` (unchanged shape) so
+  daily-practice tracking survives.
+- **"Best practice with Deaf/deaf/HOH" panel added** (prototype's "Poster" screen,
+  built as text per Echo). New bottom button opens a modal with a two-column
+  DOs / DON'Ts guide (get attention first, face me, don't cover your mouth, talk to
+  me not my interpreter, etc.), first-person framed. Sits beside the existing
+  ASL Alphabet button; both render as the prototype's two bottom buttons.
+- **Action buttons relabelled to match prototype:** "How to sign in ASL ↗"
+  (was "See the real ASL sign"). The sign link shows on **both** correct and
+  give-up (finalizeUI runs in both paths). Correct → reveal + sign + Next;
+  Incorrect → Give up + sign + Next.
+- **Dictionary moved out of the practice flow → Results tab (Echo's call, same-day
+  follow-up).** The inline "Look it into Dictionary" button + panel were removed
+  from the practice card. A new **"Word lookup"** card sits on the Results tab; each
+  word in the Response History is now a **clickable button** that looks the word up
+  (meaning, IPA, examples via dictionaryapi.dev, M-W deep link) into that panel.
+  `lookupWord()` (current-word) became generic `lookup(word)`. Rationale Echo gave:
+  practice is for recognition; checking a word's meaning is a review activity, and
+  this lets the user look up any specific word they want from their history.
+  *Tradeoff noted:* this trades away the v1 "no app-switch, look it up in the
+  moment" moat the original build leaned on — deliberate, per Echo.
+  - `scrollIntoView` call guarded (`if (dictPanel.scrollIntoView)`) for non-browser
+    test envs; real browsers always have it.
+  - Verified via jsdom: history word → click → dictionaryapi fetch → rendered
+    definition/IPA/example in the Results panel, no JS errors.
+- **Verified:** headless jsdom boot — dropdowns populate, "Word 1 of 10", wrong→
+  give-up reveals word + shows sign link, best-practice modal opens, no JS errors.
+- *Note for monetization:* with v1.8 **all** word content is now ASL-LEX-derived
+  (CC BY-NC). The whole word bank is now NonCommercial-only — if Echo ever paywalls
+  this, the entire `words.json` must be relicensed/replaced (the curated length/exam
+  packs that used to be "safe" are no longer in the build).
 
 **2026-06-04 — v1.7 (Practice/Challenge modes + ASL-LEX integration)**
 Driven by `aslfd_feedback.md` (2026-06-04). Built after launch got no response;
