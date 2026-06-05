@@ -198,6 +198,21 @@ calls with Echo before building (Category meaning, how far to strip, poster cont
   this, the entire `words.json` must be relicensed/replaced (the curated length/exam
   packs that used to be "safe" are no longer in the build).
 
+**2026-06-05 — v1.8.1 (debug: dead DOM ref crash)**
+Echo hand-edited the HTML to remove the duplicate footer "ASL Alphabet" button
+(keeping only the one under the player) and moved the "Best practice" button to the
+page footer. That left two dangling JS references to the deleted `#ref-alphabet-btn`
+(a `getElementById` + an `addEventListener`). The `addEventListener` on `null` threw
+at top-level script execution, which **halted the entire script** — so nothing
+initialized (no words loaded, and the "How to sign in ASL" link stopped appearing on
+correct answers because `finalizeUI` never ran). Fix: removed both dead references.
+- Confirmed: 1 alphabet button only (under the player); best-practice button alone in
+  the footer; on a correct answer all three controls show — **✓ Correct**,
+  **How to sign in ASL ↗**, **Next word**. Verified via jsdom with no boot errors.
+- Lesson for future hand-edits: deleting an element by id also means deleting its
+  `const x = getElementById(...)` line and any `x.addEventListener(...)`, or the whole
+  script dies silently.
+
 **2026-06-04 — v1.7 (Practice/Challenge modes + ASL-LEX integration)**
 Driven by `aslfd_feedback.md` (2026-06-04). Built after launch got no response;
 goal is to deepen the use experience.

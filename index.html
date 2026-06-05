@@ -495,7 +495,7 @@
     (Sevcikova Sehyr, Caselli, Cohen-Goldberg &amp; Emmorey, 2021), used under CC BY-NC 4.0.</p>
 </div>
 
-<!-- Reference buttons (match prototype bottom buttons) ori in 436 line-->
+<!-- Best-practice button — page footer, shown under both tabs -->
 <div class="reference-row">
   <button class="reference-btn" id="ref-bestpractice-btn">🤝 Best practice with Deaf/deaf/HOH</button>
 </div>
@@ -619,7 +619,6 @@ const aslSignLink = document.getElementById("asl-sign-link");
 
 // Alphabet + best-practice modal refs
 const abcBtn = document.getElementById("abc-btn");
-const refAlphabetBtn = document.getElementById("ref-alphabet-btn");
 const abcModal = document.getElementById("abc-modal");
 const abcClose = document.getElementById("abc-close");
 const refBestPracticeBtn = document.getElementById("ref-bestpractice-btn");
@@ -668,7 +667,6 @@ newRoundBtn.addEventListener("click", startNewRound);
 function openModal(m) { m.classList.add("open"); }
 function closeModal(m) { m.classList.remove("open"); }
 abcBtn.addEventListener("click", () => openModal(abcModal));
-refAlphabetBtn.addEventListener("click", () => openModal(abcModal));
 abcClose.addEventListener("click", () => closeModal(abcModal));
 abcModal.addEventListener("click", e => { if (e.target === abcModal) closeModal(abcModal); });
 refBestPracticeBtn.addEventListener("click", () => openModal(bpModal));
