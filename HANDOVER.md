@@ -198,6 +198,21 @@ calls with Echo before building (Category meaning, how far to strip, poster cont
   this, the entire `words.json` must be relicensed/replaced (the curated length/exam
   packs that used to be "safe" are no longer in the build).
 
+**2026-06-05 — v1.9 (split into 3 files for learning)**
+Echo wants to learn to read JS, so the single-file `index.html` was split:
+`index.html` (markup, 215 lines) + `styles.css` (337) + `app.js` (650). `index.html`
+now links them (`<link rel="stylesheet" href="styles.css">` in head, `<script
+src="app.js">` at end of body — same load order as before, so behaviour is identical).
+- `app.js` opens with a **reading guide** comment: an 11-step map of the file in the
+  order the browser runs it, plus two beginner notes (function hoisting; nothing runs
+  until the boot block at the bottom calls it). Aligns with Echo's learn-by-reading
+  preference.
+- No logic changed — pure file separation. Verified by re-inlining the 3 files and
+  booting via jsdom: no errors, packs load (Short/Medium/Long), correct answer shows
+  ✓ Correct + the How-to-sign link.
+- *Single-file note in earlier decision log is now superseded* — the CSS>500-line /
+  second-page threshold was reached, which is exactly when the split was due.
+
 **2026-06-05 — v1.8.1 (debug: dead DOM ref crash)**
 Echo hand-edited the HTML to remove the duplicate footer "ASL Alphabet" button
 (keeping only the one under the player) and moved the "Best practice" button to the
