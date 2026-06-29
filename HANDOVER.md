@@ -15,7 +15,7 @@ The tool is **launch-ready** as of v1.6. Sequence:
 1. **MATT Monash Discord** — accessibility community, lowest risk. Post first.
 2. **LinkedIn** — story-first framing (deaf student / holistic-fingerspell insight / friction-led design). Portfolio + employer signal.
 3. **Reddit** — r/deaf, r/ASL, r/learnASL. Strangers using it.
-4. **WeChat** — academic / Chinese-speaking peers if CET-4 angle is relevant.
+4. **WeChat** — academic / Chinese-speaking peers
 5. **Skip Facebook.**
 
 **Launch-post drafts: ready.** See `launch-posts.md` in this folder for the three drafts (Discord / LinkedIn / Reddit). Replace `[LINK]` with the deployed URL before posting.
